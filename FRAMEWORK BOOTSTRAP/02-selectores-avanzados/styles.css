@@ -1,0 +1,552 @@
+/* ============================================
+   HOJA DE ESTILOS - SELECTORES AVANZADOS
+   ============================================
+
+   En este archivo usamos MULTIPLES tipos de selectores,
+   organizados de lo MAS SENCILLO a lo MAS AVANZADO.
+
+   Indice:
+   1. Selector de ELEMENTO
+   2. Selector de CLASE
+   3. Selector de ID
+   4. Selector DESCENDIENTE
+   5. Selector de HIJO DIRECTO
+   6. Selector de AGRUPACION
+   7. PSEUDO-CLASES
+   8. PSEUDO-ELEMENTOS
+   9. Selector de ATRIBUTO
+   10. Selectores COMBINADORES (hermanos)
+
+   ============================================ */
+
+
+/* =============================================
+   1. SELECTOR DE ELEMENTO
+   =============================================
+   Selecciona TODAS las etiquetas de ese tipo.
+   Es el selector mas basico.
+
+   Sintaxis:  elemento { }
+   ============================================ */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f0f2f5;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    min-height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+
+/* =============================================
+   2. SELECTOR DE CLASE
+   =============================================
+   Selecciona elementos que tienen una clase especifica.
+   Un elemento puede tener MULTIPLES clases.
+
+   Sintaxis:  .nombre-clase { }
+
+   Ventaja: Es reutilizable, muchos elementos pueden
+   compartir la misma clase.
+   ============================================ */
+
+.contenido-principal {
+    /* Selecciona: <main class="contenido-principal"> */
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.seccion {
+    /* Selecciona: todos los elementos con class="seccion" */
+    background-color: rgb(246, 243, 243);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.destacado {
+    /* Selecciona: <p class="destacado"> */
+    font-size: 1.1em;
+    color: #2c3e50;
+    border-left: 4px solid #3498db;   /* Linea azul a la izquierda */
+    padding-left: 15px;               /* Espacio entre la linea y el texto */
+    background-color: #ebf5fb;        /* Fondo azul muy claro */
+    padding: 10px 15px;
+    border-radius: 0 5px 5px 0;
+}
+
+.resaltado {
+    /* Selecciona: <span class="resaltado"> */
+    background-color: #ffffcc;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.enlace-nav {
+    /* Selecciona: <a class="enlace-nav"> */
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    /* transition hace que el cambio de color sea suave (animado) */
+}
+
+.activo {
+    /* Selecciona: el enlace que tiene class="activo" */
+    background-color: #e74c3c;
+    font-weight: bold;
+}
+
+.btn {
+    /* Clase base para TODOS los botones */
+    display: inline-block;
+    margin-top: 15px;
+    margin-right: 10px;
+    padding: 12px 30px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-enviar {
+    /* Clase especifica para el boton de enviar */
+    background-color: #3498db;
+}
+
+.btn-limpiar {
+    /* Clase especifica para el boton de limpiar */
+    background-color: #95a5a6;
+}
+
+.enlace-externo {
+    /* Clase para enlaces que llevan fuera del sitio */
+    color: #3498db;
+    text-decoration: underline;
+}
+
+
+/* =============================================
+   3. SELECTOR DE ID
+   =============================================
+   Selecciona UN elemento unico con ese ID.
+   Cada ID debe ser UNICO en toda la pagina.
+
+   Sintaxis:  #nombre-id { }
+
+   Nota: Tiene mas "peso" (especificidad) que las clases.
+   Se recomienda usar clases en lugar de IDs para estilos.
+   ============================================ */
+
+#titulo-principal {
+    /* Selecciona: <h1 id="titulo-principal"> */
+    font-size: 2.5em;
+    color: #97ff00;
+    margin-bottom: 10px;
+}
+
+#cabecera {
+    /* Selecciona: <header id="cabecera"> */
+    background-color: #2c3e50;
+    padding: 15px 30px;
+}
+
+#pie-pagina {
+    /* Selecciona: <footer id="pie-pagina"> */
+    background-color: #9f1774;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+
+/* =============================================
+   4. SELECTOR DESCENDIENTE
+   =============================================
+   Selecciona elementos que estan DENTRO de otro elemento,
+   sin importar que tan profundo esten anidados.
+
+   Sintaxis:  ancestro descendiente { }
+   (separados por un ESPACIO)
+   ============================================ */
+
+nav a {
+    /* Selecciona: todos los <a> que estan DENTRO de un <nav> */
+    display: inline-block;
+}
+
+.seccion h2 {
+    /* Selecciona: todos los <h2> dentro de un elemento con class="seccion" */
+    font-size: 1.8em;
+    color: #34495e;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+.seccion h3 {
+    /* Selecciona: todos los <h3> dentro de .seccion */
+    font-size: 1.3em;
+    color: #2c3e50;
+}
+
+.seccion p {
+    /* Selecciona: todos los <p> dentro de .seccion */
+    margin-bottom: 15px;
+}
+
+#pie-pagina a {
+    /* Selecciona: los <a> que estan dentro de #pie-pagina */
+    color: #3498db;
+}
+
+.menu-principal a {
+    /* Selecciona: los <a> dentro de .menu-principal */
+    font-size: 0.95em;
+}
+
+
+/* =============================================
+   5. SELECTOR DE HIJO DIRECTO
+   =============================================
+   Selecciona SOLO los hijos directos (primer nivel),
+   NO los nietos ni descendientes mas profundos.
+
+   Sintaxis:  padre > hijo { }
+   ============================================ */
+
+.lista-habilidades > li {
+    /* Selecciona: los <li> que son hijos DIRECTOS de .lista-habilidades
+       Si hubiera una sublista <ul> dentro, sus <li> NO serian afectados */
+    padding: 8px 0;
+    border-bottom: 1px dashed #ddd;
+}
+
+.formulario-contacto > label {
+    /* Selecciona: los <label> hijos directos del formulario */
+    color: #2c3e50;
+    font-size: 0.95em;
+}
+
+
+/* =============================================
+   6. SELECTOR DE AGRUPACION
+   =============================================
+   Aplica los MISMOS estilos a multiples selectores.
+   Evita repetir codigo.
+
+   Sintaxis:  selector1, selector2, selector3 { }
+   (separados por COMAS)
+   ============================================ */
+
+h1, h2, h3 {
+    /* Aplica a TODOS los <h1>, <h2> y <h3> */
+    font-family: Georgia, 'Times New Roman', serif;
+    /* Les da una tipografia serif a todos los titulos */
+}
+
+.btn-enviar, .btn-limpiar {
+    /* Aplica a ambos botones */
+    letter-spacing: 1px;   /* Espacio entre letras */
+    text-transform: uppercase;  /* Convierte el texto a MAYUSCULAS */
+    font-size: 0.9em;
+}
+
+input, textarea {
+    /* Aplica a todos los <input> y <textarea> */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+/* =============================================
+   7. PSEUDO-CLASES
+   =============================================
+   Seleccionan elementos en un ESTADO especifico
+   (cuando el mouse pasa encima, cuando tiene foco, etc.)
+   o por su POSICION (primer hijo, ultimo, par/impar).
+
+   Sintaxis:  selector:pseudo-clase { }
+   (con DOS PUNTOS simples)
+   ============================================ */
+
+/* --- Estados de interaccion --- */
+
+a:hover {
+    /* Cuando el mouse PASA ENCIMA de un enlace */
+    color: #e74c3c;
+    text-decoration: underline;
+}
+
+.enlace-nav:hover {
+    /* Cuando el mouse pasa encima de un enlace del menu */
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Fondo blanco semitransparente */
+}
+
+.btn-enviar:hover {
+    /* Cuando el mouse pasa encima del boton de enviar */
+    background-color: #2980b9;    /* Azul mas oscuro */
+}
+
+.btn-limpiar:hover {
+    background-color: #7f8c8d;    /* Gris mas oscuro */
+}
+
+input:focus, textarea:focus {
+    /* Cuando un campo de formulario esta ACTIVO (hacemos clic en el) */
+    border-color: #3498db;         /* Borde azul */
+    outline: none;                 /* Quita el contorno por defecto del navegador */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);  /* Resplandor azul */
+}
+
+/* --- Posicion entre hermanos --- */
+
+.lista-habilidades li:first-child {
+    /* Selecciona: el PRIMER <li> dentro de .lista-habilidades */
+    font-weight: bold;
+    color: #27ae60;                /* Verde */
+}
+
+.lista-habilidades li:last-child {
+    /* Selecciona: el ULTIMO <li> dentro de .lista-habilidades */
+    border-bottom: none;           /* Quita la linea del ultimo elemento */
+}
+
+tr:nth-child(even) {
+    /* Selecciona: las filas PARES de la tabla (2da, 4ta, etc.)
+       even = pares, odd = impares */
+    background-color: #f2f2f2;     /* Fondo gris claro alterno */
+}
+
+.lista-pasos li:nth-child(odd) {
+    /* Selecciona: los elementos IMPARES de la lista (1ro, 3ro, etc.) */
+    background-color: #eaf2f8;     /* Fondo azul muy claro */
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+
+/* =============================================
+   8. PSEUDO-ELEMENTOS
+   =============================================
+   Crean "elementos virtuales" que no existen en el HTML.
+   Permiten estilizar PARTES de un elemento o agregar
+   contenido decorativo.
+
+   Sintaxis:  selector::pseudo-elemento { }
+   (con DOBLE dos puntos)
+   ============================================ */
+
+.destacado::first-line {
+    /* Estiliza SOLO la primera linea del parrafo destacado */
+    font-weight: bold;
+    font-size: 1.05em;
+}
+
+.lista-habilidades li::before {
+    /* Agrega contenido ANTES de cada <li> */
+    content: "💡 ";     /* La propiedad content define que se agrega */
+    /* Este emoji aparece antes del texto de cada habilidad */
+}
+
+.lista-pasos li::before {
+    /* Agrega una flecha antes de cada paso */
+    content: "➡ ";
+}
+
+#pie-pagina p::after {
+    /* Agrega contenido DESPUES de los parrafos del footer */
+    content: " ✨";
+}
+
+.seccion h2::after {
+    /* Agrega una linea decorativa despues de los h2 */
+    content: "";                    /* Contenido vacio (solo decoracion) */
+    display: block;                 /* Ocupa su propia linea */
+    width: 50px;                    /* Ancho de la linea */
+    height: 3px;                    /* Grosor de la linea */
+    background-color: #e74c3c;     /* Color rojo */
+    margin-top: 8px;               /* Espacio arriba */
+    border-radius: 2px;
+}
+
+
+/* =============================================
+   9. SELECTOR DE ATRIBUTO
+   =============================================
+   Selecciona elementos basandose en sus ATRIBUTOS HTML
+   o en el VALOR de esos atributos.
+
+   Sintaxis:
+   [atributo]              → tiene el atributo
+   [atributo="valor"]      → tiene ese valor exacto
+   [atributo^="valor"]     → el valor EMPIEZA con...
+   [atributo$="valor"]     → el valor TERMINA con...
+   [atributo*="valor"]     → el valor CONTIENE...
+   ============================================ */
+
+input[type="text"] {
+    /* Selecciona: los <input> cuyo type sea exactamente "text" */
+    background-color: #fefefe;
+}
+
+input[type="email"] {
+    /* Selecciona: los <input> cuyo type sea "email" */
+    background-color: #fef9e7;      /* Fondo amarillo muy claro */
+}
+
+a[target="_blank"] {
+    /* Selecciona: los <a> que abren en nueva pestaña */
+    /* Agrega un indicador visual de que es un enlace externo */
+    padding-right: 15px;
+}
+
+[data-nivel="basico"] {
+    /* Selecciona: elementos con data-nivel="basico" */
+    color: #27ae60;                 /* Verde */
+}
+
+[data-nivel="intermedio"] {
+    /* Selecciona: elementos con data-nivel="intermedio" */
+    color: #f39c12;                 /* Naranja */
+}
+
+[data-nivel="avanzado"] {
+    /* Selecciona: elementos con data-nivel="avanzado" */
+    color: #e74c3c;                 /* Rojo */
+}
+
+input[required] {
+    /* Selecciona: TODOS los <input> que tengan el atributo required
+       (sin importar su valor, solo que exista) */
+    border-left: 4px solid #e74c3c;  /* Linea roja a la izquierda */
+}
+
+[data-tema="bienvenida"] {
+    /* Selecciona: el elemento con data-tema="bienvenida" */
+    border-top: 4px solid #3498db;
+}
+
+
+/* =============================================
+   10. SELECTORES COMBINADORES (HERMANOS)
+   =============================================
+   Seleccionan elementos basandose en su relacion
+   con elementos que estan al MISMO NIVEL (hermanos).
+
+   Sintaxis:
+   A + B  → Hermano ADYACENTE (el B que va justo despues de A)
+   A ~ B  → Hermanos GENERALES (todos los B que van despues de A)
+   ============================================ */
+
+h2 + p {
+    /* HERMANO ADYACENTE: selecciona el <p> que va
+       INMEDIATAMENTE despues de un <h2> */
+    font-size: 1.05em;
+    color: #555;
+    /* Esto hace que el primer parrafo despues de un subtitulo
+       se vea ligeramente diferente */
+}
+
+h3 + table {
+    /* Selecciona: la <table> que va justo despues de un <h3> */
+    margin-top: 5px;                /* Reduce el espacio entre el titulo y la tabla */
+}
+
+h2 ~ p {
+    /* HERMANO GENERAL: selecciona TODOS los <p> que estan
+       despues de un <h2> (al mismo nivel, no necesariamente juntos) */
+    padding-left: 5px;
+}
+
+.btn-enviar + .btn-limpiar {
+    /* Selecciona: .btn-limpiar SOLO cuando va justo despues de .btn-enviar */
+    margin-left: 5px;
+}
+
+
+/* =============================================
+   RESUMEN DE ESPECIFICIDAD (PESO de los selectores)
+   =============================================
+
+   Cuando dos reglas afectan al mismo elemento,
+   gana la que tiene MAYOR especificidad:
+
+   Selector                  | Peso
+   --------------------------|--------
+   elemento (p, h1, div)     | 0,0,1
+   clase (.nombre)           | 0,1,0
+   ID (#nombre)              | 1,0,0
+
+   Ejemplos:
+   p { }                     → 0,0,1
+   .destacado { }            → 0,1,0  (gana sobre p)
+   #titulo-principal { }     → 1,0,0  (gana sobre .destacado)
+   .seccion h2 { }           → 0,1,1  (clase + elemento)
+   nav a:hover { }           → 0,1,2  (pseudo-clase + 2 elementos)
+
+   Si el peso es igual, gana la regla que aparece
+   DESPUES en el archivo CSS (la ultima declarada).
+
+   ============================================ */

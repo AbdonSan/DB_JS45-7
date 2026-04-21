@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - María López (Bootstrap)</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <!-- HEADER -->
+  <header class="bg-dark text-white p-4">
+    <div class="container d-flex align-items-center gap-3">
+      <img src="img/foto.svg" alt="Foto" width="90" height="90" class="rounded-circle border border-white border-3">
+      <div>
+        <h1 class="h3 mb-0">María López García</h1>
+        <p class="mb-0 opacity-75">Desarrolladora Web Frontend</p>
+        <p class="mb-0 opacity-75">Madrid, España</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="bg-secondary p-2">
+    <div class="container d-flex gap-3">
+      <a href="index.html" class="text-white text-decoration-none">Versión CSS Puro</a>
+      <a href="bootstrap.html" class="text-white text-decoration-none">Bootstrap</a>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO: row/col de Bootstrap (simula el grid) -->
+  <div class="container my-4">
+    <div class="row g-4">
+
+      <!-- SIDEBAR -->
+      <div class="col-md-4">
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title border-bottom pb-2 text-primary">Contacto</h5>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-1"><strong>Email:</strong> maria@email.com</li>
+              <li class="mb-1"><strong>Tel:</strong> +34 612 345 678</li>
+              <li class="mb-1"><strong>LinkedIn:</strong> /in/marialopez</li>
+              <li><strong>GitHub:</strong> /marialopez</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title border-bottom pb-2 text-primary">Habilidades</h5>
+            <div class="mb-2">
+              <small>HTML / CSS</small>
+              <div class="progress"><div class="progress-bar" style="width: 90%"></div></div>
+            </div>
+            <div class="mb-2">
+              <small>JavaScript</small>
+              <div class="progress"><div class="progress-bar" style="width: 75%"></div></div>
+            </div>
+            <div class="mb-2">
+              <small>React</small>
+              <div class="progress"><div class="progress-bar" style="width: 60%"></div></div>
+            </div>
+            <div>
+              <small>Git</small>
+              <div class="progress"><div class="progress-bar" style="width: 70%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title border-bottom pb-2 text-primary">Idiomas</h5>
+            <div class="row">
+              <div class="col-6"><strong>Español:</strong></div><div class="col-6">Nativo</div>
+              <div class="col-6"><strong>Inglés:</strong></div><div class="col-6">B2</div>
+              <div class="col-6"><strong>Francés:</strong></div><div class="col-6">A2</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MAIN -->
+      <div class="col-md-8">
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title border-bottom pb-2 text-primary">Perfil</h5>
+            <p class="mb-0">Desarrolladora frontend con 3 años de experiencia creando sitios web responsivos. Me apasiona el diseño limpio y la accesibilidad web.</p>
+          </div>
+        </div>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title border-bottom pb-2 text-primary">Experiencia</h5>
+            <div class="mb-3">
+              <h6 class="mb-0">Desarrolladora Frontend - TechSolutions S.L.</h6>
+              <small class="text-muted">Enero 2024 - Presente</small>
+              <p class="mt-1 mb-0">Desarrollo de interfaces web con HTML, CSS y JavaScript. Maquetación responsiva con Flexbox y Grid.</p>
+            </div>
+            <div>
+              <h6 class="mb-0">Becaria Web - Agencia Creativa</h6>
+              <small class="text-muted">Junio 2023 - Diciembre 2023</small>
+              <p class="mt-1 mb-0">Soporte en maquetación de landing pages y mantenimiento de sitios WordPress.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title border-bottom pb-2 text-primary">Educación</h5>
+            <div class="mb-3">
+              <h6 class="mb-0">Grado en Ingeniería Informática</h6>
+              <small class="text-muted">Universidad Complutense de Madrid · 2019 - 2023</small>
+            </div>
+            <div>
+              <h6 class="mb-0">Curso Frontend Avanzado</h6>
+              <small class="text-muted">Platzi · 2023</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="text-center p-3 text-muted">
+    <small>CV creado con Bootstrap 5 — Compara con la versión CSS puro</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

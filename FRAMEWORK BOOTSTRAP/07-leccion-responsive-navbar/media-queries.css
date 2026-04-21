@@ -1,0 +1,164 @@
+/* ========================================
+   MEDIA QUERIES - Indicador y tarjetas
+
+   Los media queries permiten aplicar estilos diferentes
+   segun el tamano de la pantalla.
+
+   Aqui usamos el enfoque "Mobile First":
+   - Primero escribimos los estilos para movil (sin media query)
+   - Luego usamos min-width para agregar estilos en pantallas mas grandes
+   ======================================== */
+
+/*
+   .indicador-breakpoint — Caja que cambia de color segun el breakpoint
+   Sirve como ayuda visual para saber en que rango de pantalla estas.
+   Rojo = movil, naranja = tablet, verde = desktop.
+*/
+.indicador-breakpoint {
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    background: #e74c3c;           /* Rojo = estamos en movil */
+    color: white;
+}
+
+/*
+   ::after — Pseudo-elemento que agrega texto despues del contenido
+   Usamos "content" para insertar texto desde CSS (sin tocar el HTML).
+   Esto nos permite cambiar el texto segun el breakpoint.
+*/
+.indicador-breakpoint::after {
+    content: " — MOVIL (< 768px)";
+}
+
+/*
+   .tarjetas-responsivas — Contenedor grid para las tarjetas
+   Empieza con 1 columna en movil, y cambia en los media queries.
+*/
+.tarjetas-responsivas {
+    display: grid;
+    grid-template-columns: 1fr;       /* Movil: 1 columna, las tarjetas se apilan */
+    gap: 15px;
+}
+
+/* .tarjeta — Cada tarjeta individual */
+.tarjeta {
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+    border-left: 4px solid #3498db;   /* Linea azul a la izquierda como acento visual */
+}
+
+.tarjeta h3 {
+    margin: 0 0 5px;                  /* Solo margen abajo para separar del parrafo */
+}
+
+
+/* ========================================
+   MEDIA QUERY: TABLET (768px en adelante)
+
+   @media (min-width: 768px) significa:
+   "Aplica estos estilos SOLO cuando la pantalla
+   tenga 768px o mas de ancho"
+
+   768px es un breakpoint comun para tablets.
+   ======================================== */
+@media (min-width: 768px) {
+
+    /* Flexbox: cambia de columna a fila en tablet */
+    .flex-container {
+        flex-direction: row;           /* Ahora los hijos van lado a lado (horizontal) */
+    }
+
+    .flex-container .caja {
+        flex: 1;                       /* Cada caja ocupa el mismo espacio en la fila */
+    }
+
+    /*
+       Grid layout: de 1 columna pasa a 2 columnas
+       "1fr 3fr" = la primera columna ocupa 1 parte, la segunda 3 partes.
+       Ejemplo: si el ancho total es 800px, sidebar = 200px, contenido = 600px.
+    */
+    .grid-layout {
+        grid-template-columns: 1fr 3fr;
+    }
+
+    /*
+       grid-column: 1 / -1 — Hace que el elemento ocupe TODAS las columnas.
+       1 = empieza en la primera linea del grid.
+       -1 = termina en la ultima linea del grid.
+       Asi header y footer siempre ocupan todo el ancho,
+       sin importar cuantas columnas tenga el grid.
+    */
+    .header {
+        grid-column: 1 / -1;
+    }
+
+    .footer {
+        grid-column: 1 / -1;
+    }
+
+    /*
+       Galeria: de 2 columnas pasa a 3
+       repeat(3, 1fr) es lo mismo que escribir "1fr 1fr 1fr"
+       pero mas limpio.
+    */
+    .grid-galeria {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* El indicador cambia a naranja para mostrar que estamos en tablet */
+    .indicador-breakpoint {
+        background: #e67e22;
+    }
+
+    .indicador-breakpoint::after {
+        content: " — TABLET (768px - 1023px)";
+    }
+
+    /* Tarjetas pasan de 1 a 2 columnas */
+    .tarjetas-responsivas {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* ========================================
+   MEDIA QUERY: DESKTOP (1024px en adelante)
+
+   Este media query se "suma" al de tablet.
+   Es decir, en desktop se aplican AMBOS:
+   primero los de 768px y luego estos de 1024px.
+   Los estilos de aqui sobreescriben a los de tablet
+   cuando hay conflicto (eso es la "cascada" de CSS).
+   ======================================== */
+@media (min-width: 1024px) {
+
+    /*
+       Centramos el body y le ponemos un ancho maximo
+       para que el contenido no se estire demasiado en pantallas grandes.
+       margin: 0 auto centra un elemento con ancho fijo horizontalmente.
+    */
+    body {
+        max-width: 1100px;
+        margin: 0 auto;               /* 0 arriba/abajo, auto izquierda/derecha = centrado */
+        padding: 30px;
+    }
+
+    /* El indicador cambia a verde para mostrar que estamos en desktop */
+    .indicador-breakpoint {
+        background: #2ecc71;
+    }
+
+    .indicador-breakpoint::after {
+        content: " — DESKTOP (1024px+)";
+    }
+
+    /* Tarjetas pasan de 2 a 3 columnas */
+    .tarjetas-responsivas {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

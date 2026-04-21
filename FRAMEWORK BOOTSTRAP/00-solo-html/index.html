@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+    Este archivo muestra HTML PURO, sin ninguna hoja de estilos.
+    El navegador aplica sus estilos por defecto.
+    Esto te permite ver la ESTRUCTURA del documento
+    antes de agregarle cualquier estilo CSS.
+-->
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primera Pagina - Solo HTML</title>
+    <!--
+        NO hay <link> a ninguna hoja de estilos.
+        Todo lo que ves en el navegador son los estilos
+        por defecto que el navegador aplica automaticamente.
+    -->
+</head>
+
+<body>
+
+    <!-- ============================================ -->
+    <!-- HEADER: Cabecera de la pagina                -->
+    <!-- ============================================ -->
+    <header>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#sobre-mi">Sobre Mi</a>
+            <a href="#habilidades">Habilidades</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- MAIN: Contenido principal de la pagina       -->
+    <!-- ============================================ -->
+    <main>
+
+        <!-- --- Seccion: Inicio --- -->
+        <section>
+            <h1>Bienvenidos a Mi Pagina Web</h1>
+
+            <p>
+                Esta es mi primera pagina web. Aqui estoy aprendiendo
+                <strong>HTML</strong> y <em>CSS</em> desde cero.
+            </p>
+
+            <p>
+                HTML es el <span>lenguaje de marcado</span> que estructura el contenido,
+                mientras que CSS se encarga de darle estilo y presentacion visual.
+            </p>
+
+            <img src="https://placehold.co/600x300?text=Mi+Imagen" alt="Imagen de ejemplo">
+        </section>
+
+        <!-- --- Seccion: Sobre Mi --- -->
+        <section>
+            <h2>Sobre Mi</h2>
+
+            <p>
+                Soy estudiante de desarrollo web. Me interesa aprender
+                tecnologias modernas para crear sitios web increibles.
+            </p>
+
+            <h3>Datos Personales</h3>
+
+            <table>
+                <tr>
+                    <th>Campo</th>
+                    <th>Valor</th>
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td>Estudiante Web</td>
+                </tr>
+                <tr>
+                    <td>Edad</td>
+                    <td>25 anios</td>
+                </tr>
+                <tr>
+                    <td>Ciudad</td>
+                    <td>Ciudad de Mexico</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- --- Seccion: Habilidades --- -->
+        <section>
+            <h2>Mis Habilidades</h2>
+
+            <p>Estas son las tecnologias que estoy aprendiendo:</p>
+
+            <ul>
+                <li>HTML - Estructura</li>
+                <li>CSS - Estilos</li>
+                <li>JavaScript - Interactividad</li>
+                <li>Git - Control de versiones</li>
+            </ul>
+
+            <p>Mi plan de aprendizaje paso a paso:</p>
+
+            <ol>
+                <li>Aprender HTML basico</li>
+                <li>Dominar CSS</li>
+                <li>Practicar JavaScript</li>
+                <li>Crear proyectos reales</li>
+            </ol>
+        </section>
+
+        <!-- --- Seccion: Contacto --- -->
+        <section>
+            <h2>Contacto</h2>
+
+            <p>Enviame un mensaje a traves de este formulario:</p>
+
+            <form>
+                <label>Nombre:</label>
+                <input type="text" placeholder="Tu nombre">
+
+                <label>Email:</label>
+                <input type="email" placeholder="tu@email.com">
+
+                <label>Mensaje:</label>
+                <textarea placeholder="Escribe tu mensaje aqui..."></textarea>
+
+                <button>Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- ============================================ -->
+    <!-- FOOTER: Pie de pagina                        -->
+    <!-- ============================================ -->
+    <footer>
+        <p>© 2026 - Mi Primera Pagina Web. Todos los derechos reservados.</p>
+        <p>
+            Sigueme en
+            <a href="https://github.com" target="_blank">GitHub</a>
+        </p>
+    </footer>
+
+</body>
+</html>

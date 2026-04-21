@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--
+    Este es el MISMO HTML de la carpeta 01, pero ENRIQUECIDO con:
+    - Clases (class="...")
+    - IDs (id="...")
+    - Atributos de datos (data-*="...")
+
+    Esto nos permite usar selectores CSS mas especificos y poderosos.
+-->
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primera Pagina - Selectores Avanzados</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ============================================ -->
+    <!-- HEADER: Tiene id="cabecera" para estilizarlo -->
+    <!-- ============================================ -->
+    <header id="cabecera">
+
+        <nav class="menu-principal">
+            <!--
+                class="menu-principal" nos permite seleccionar
+                este nav especificamente con .menu-principal en CSS
+            -->
+            <a href="#inicio" class="enlace-nav">Inicio</a>
+            <a href="#sobre-mi" class="enlace-nav">Sobre Mi</a>
+            <a href="#habilidades" class="enlace-nav">Habilidades</a>
+            <a href="#contacto" class="enlace-nav activo">Contacto</a>
+            <!--
+                El ultimo enlace tiene DOS clases: "enlace-nav" y "activo".
+                Podemos estilizar .activo de forma diferente.
+            -->
+        </nav>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- MAIN -->
+    <!-- ============================================ -->
+    <main class="contenido-principal">
+
+        <!-- --- Seccion: Inicio --- -->
+        <section id="inicio" class="seccion" data-tema="bienvenida">
+            <!--
+                id="inicio" = identificador unico (solo uno por pagina)
+                class="seccion" = clase reutilizable (muchos elementos pueden tenerla)
+                data-tema="bienvenida" = atributo personalizado para guardar datos
+            -->
+
+            <h1 id="titulo-principal">Bienvenidos a Mi Pagina Web</h1>
+
+            <p class="destacado">
+                Esta es mi primera pagina web. Aqui estoy aprendiendo
+                <strong>HTML</strong> y <em>CSS</em> desde cero.
+            </p>
+            <!-- class="destacado" nos permite resaltar parrafos especiales -->
+
+            <p>
+                HTML es el <span class="resaltado">lenguaje de marcado</span> que estructura el contenido,
+                mientras que CSS se encarga de darle estilo y presentacion visual.
+            </p>
+
+            <img src="https://placehold.co/600x300?text=Mi+Imagen"
+                 alt="Imagen de ejemplo"
+                 class="imagen-principal">
+        </section>
+
+        <!-- --- Seccion: Sobre Mi --- -->
+        <section id="sobre-mi" class="seccion" data-tema="informacion">
+
+            <h2>Sobre Mi</h2>
+
+            <p>
+                Soy estudiante de desarrollo web. Me interesa aprender
+                tecnologias modernas para crear sitios web increibles.
+            </p>
+
+            <h3>Datos Personales</h3>
+
+            <table class="tabla-datos">
+                <tr>
+                    <th>Campo</th>
+                    <th>Valor</th>
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td>Estudiante Web</td>
+                </tr>
+                <tr>
+                    <td>Edad</td>
+                    <td>25 anios</td>
+                </tr>
+                <tr>
+                    <td>Ciudad</td>
+                    <td>Ciudad de Mexico</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- --- Seccion: Habilidades --- -->
+        <section id="habilidades" class="seccion" data-tema="skills">
+
+            <h2>Mis Habilidades</h2>
+
+            <p>Estas son las tecnologias que estoy aprendiendo:</p>
+
+            <ul class="lista-habilidades">
+                <li data-nivel="basico">HTML - Estructura</li>
+                <li data-nivel="basico">CSS - Estilos</li>
+                <li data-nivel="intermedio">JavaScript - Interactividad</li>
+                <li data-nivel="avanzado">Git - Control de versiones</li>
+                <!--
+                    data-nivel="..." es un atributo personalizado.
+                    Podemos usar selectores de atributo en CSS para estilizar
+                    cada nivel de forma diferente.
+                -->
+            </ul>
+
+            <p>Mi plan de aprendizaje paso a paso:</p>
+
+            <ol class="lista-pasos">
+                <li>Aprender HTML basico</li>
+                <li>Dominar CSS</li>
+                <li>Practicar JavaScript</li>
+                <li>Crear proyectos reales</li>
+            </ol>
+        </section>
+
+        <!-- --- Seccion: Contacto --- -->
+        <section id="contacto" class="seccion" data-tema="formulario">
+
+            <h2>Contacto</h2>
+
+            <p class="destacado">Enviame un mensaje a traves de este formulario:</p>
+
+            <form class="formulario-contacto">
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" placeholder="Tu nombre" required>
+                <!--
+                    for="nombre" conecta el label con el input que tiene id="nombre".
+                    required hace que el campo sea obligatorio.
+                -->
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="tu@email.com" required>
+
+                <label for="asunto">Asunto:</label>
+                <input type="text" id="asunto" placeholder="Asunto del mensaje">
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" placeholder="Escribe tu mensaje aqui..."></textarea>
+
+                <button type="submit" class="btn btn-enviar">Enviar</button>
+                <button type="reset" class="btn btn-limpiar">Limpiar</button>
+                <!--
+                    Dos botones con clases diferentes nos permiten
+                    estilizar cada uno de forma distinta.
+                -->
+            </form>
+        </section>
+    </main>
+
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer id="pie-pagina">
+        <p>© 2026 - Mi Primera Pagina Web. Todos los derechos reservados.</p>
+        <p>
+            Sigueme en
+            <a href="https://github.com" target="_blank" class="enlace-externo">GitHub</a>
+        </p>
+    </footer>
+
+</body>
+</html>

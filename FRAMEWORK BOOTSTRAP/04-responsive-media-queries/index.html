@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<!--
+    CARPETA 04 - RESPONSIVE DESIGN Y MEDIA QUERIES
+    ================================================
+    En esta leccion aprendemos:
+
+    1. La diferencia entre valores FIJOS (px) y RESPONSIVOS (%, em, rem, vw, vh)
+    2. Como usar Media Queries para adaptar el diseño a distintos tamaños de pantalla
+    3. Patrones comunes de diseño responsive
+
+    IMPORTANTE: Redimensiona la ventana del navegador para ver los cambios en accion.
+-->
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+        ESTA LINEA ES CLAVE PARA RESPONSIVE:
+        Sin ella, los celulares muestran la pagina "en miniatura"
+        como si fuera una pantalla de escritorio.
+
+        width=device-width   → el ancho de la pagina = ancho del dispositivo
+        initial-scale=1.0    → zoom inicial al 100%
+    -->
+
+    <title>Responsive Design y Media Queries</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ============================================ -->
+    <!-- HEADER                                       -->
+    <!-- ============================================ -->
+    <header class="header">
+        <div class="contenedor">
+            <h1 class="header-titulo">Responsive Design</h1>
+            <p class="header-subtitulo">Aprende a crear paginas que se adaptan a cualquier pantalla</p>
+        </div>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- INDICADOR DE TAMAÑO DE PANTALLA              -->
+    <!-- ============================================ -->
+    <div class="indicador-pantalla" id="indicador">
+        <!--
+            Este indicador muestra en tiempo real el ancho
+            de la ventana y en que "breakpoint" estamos.
+            Se actualiza con JavaScript al redimensionar.
+        -->
+        <span class="indicador-ancho" id="ancho-pantalla">0px</span>
+        <span class="indicador-breakpoint" id="breakpoint-actual">...</span>
+    </div>
+
+    <div class="contenedor">
+        <main>
+
+            <!-- ======================================== -->
+            <!-- SECCION: Introduccion                    -->
+            <!-- ======================================== -->
+            <section class="seccion seccion-intro">
+                <h2>¿Que es Responsive Design?</h2>
+
+                <p>
+                    <strong>Responsive Design</strong> (diseño responsivo) es una tecnica
+                    que permite que una pagina web se vea bien en <strong>cualquier
+                    dispositivo</strong>: celular, tablet, laptop o monitor grande.
+                </p>
+
+                <p>
+                    El problema con usar valores fijos como <code>width: 800px</code>
+                    es que en una pantalla de celular (que mide ~375px) el contenido
+                    se desborda. La solucion es usar <strong>unidades relativas</strong>
+                    y <strong>media queries</strong>.
+                </p>
+
+                <div class="conceptos-clave">
+                    <div class="concepto">
+                        <h3>Unidades Relativas</h3>
+                        <p>Valores que se adaptan al contexto: <code>%</code>, <code>em</code>, <code>rem</code>, <code>vw</code>, <code>vh</code></p>
+                    </div>
+                    <div class="concepto">
+                        <h3>Media Queries</h3>
+                        <p>Reglas CSS que aplican estilos SOLO cuando se cumple una condicion (ej: ancho de pantalla)</p>
+                    </div>
+                    <div class="concepto">
+                        <h3>Mobile First</h3>
+                        <p>Estrategia de diseñar primero para celular y luego agregar estilos para pantallas mas grandes</p>
+                    </div>
+                </div>
+
+                <p><strong>Contenido de esta pagina:</strong></p>
+                <ol class="indice-temas">
+                    <li>Unidades fijas vs responsivas (comparacion visual)</li>
+                    <li>Unidades de viewport (vw, vh)</li>
+                    <li>Media Queries - sintaxis y breakpoints</li>
+                    <li>Ejemplo: layout que cambia con el tamaño</li>
+                    <li>Ejemplo: navegacion responsive</li>
+                    <li>Imagenes responsivas</li>
+                    <li>Tipografia responsiva</li>
+                </ol>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCION 1: Unidades fijas vs responsivas -->
+            <!-- ======================================== -->
+            <section class="seccion">
+                <h2>1. Valores Fijos vs Responsivos</h2>
+
+                <p>
+                    Compara estas dos cajas. <strong>Redimensiona la ventana</strong>
+                    del navegador para ver la diferencia:
+                </p>
+
+                <!-- --- Comparacion de anchos --- -->
+                <h3>Width: px vs %</h3>
+
+                <div class="comparacion">
+                    <div class="comp-ejemplo">
+                        <div class="comp-etiqueta comp-fijo">FIJO</div>
+                        <div class="caja-fija-px">
+                            width: 600px
+                            <span class="caja-nota">No cambia. En pantallas chicas se desborda.</span>
+                        </div>
+                    </div>
+
+                    <div class="comp-ejemplo">
+                        <div class="comp-etiqueta comp-responsivo">RESPONSIVO</div>
+                        <div class="caja-responsiva-porcentaje">
+                            width: 80%
+                            <span class="caja-nota">Siempre ocupa el 80% del contenedor padre.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- --- Comparacion con max-width --- -->
+                <h3>max-width: la combinacion ideal</h3>
+
+                <div class="comparacion">
+                    <div class="comp-ejemplo">
+                        <div class="comp-etiqueta comp-fijo">FIJO</div>
+                        <div class="caja-fija-ancho">
+                            width: 500px
+                            <span class="caja-nota">Siempre mide 500px, no importa la pantalla.</span>
+                        </div>
+                    </div>
+
+                    <div class="comp-ejemplo">
+                        <div class="comp-etiqueta comp-responsivo">RESPONSIVO</div>
+                        <div class="caja-responsiva-max">
+                            width: 100% + max-width: 500px
+                            <span class="caja-nota">Crece hasta 500px, pero se encoge si la pantalla es chica.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- --- Tabla de unidades --- -->
+                <h3>Guia rapida de unidades</h3>
+
+                <div class="tabla-responsive">
+                    <table class="tabla-unidades">
+                        <tr>
+                            <th>Unidad</th>
+                            <th>Tipo</th>
+                            <th>Relativa a...</th>
+                            <th>Ejemplo</th>
+                            <th>Uso comun</th>
+                        </tr>
+                        <tr class="fila-fijo">
+                            <td><code>px</code></td>
+                            <td>Fija</td>
+                            <td>Nada (absoluta)</td>
+                            <td><code>width: 300px</code></td>
+                            <td>Bordes, sombras, detalles pequenos</td>
+                        </tr>
+                        <tr class="fila-responsivo">
+                            <td><code>%</code></td>
+                            <td>Relativa</td>
+                            <td>Elemento padre</td>
+                            <td><code>width: 50%</code></td>
+                            <td>Anchos de contenedores, columnas</td>
+                        </tr>
+                        <tr class="fila-responsivo">
+                            <td><code>em</code></td>
+                            <td>Relativa</td>
+                            <td>font-size del padre</td>
+                            <td><code>padding: 1.5em</code></td>
+                            <td>Spacing proporcional al texto</td>
+                        </tr>
+                        <tr class="fila-responsivo">
+                            <td><code>rem</code></td>
+                            <td>Relativa</td>
+                            <td>font-size del &lt;html&gt; (16px default)</td>
+                            <td><code>font-size: 1.2rem</code></td>
+                            <td>Tipografia, spacing consistente</td>
+                        </tr>
+                        <tr class="fila-responsivo">
+                            <td><code>vw</code></td>
+                            <td>Relativa</td>
+                            <td>1% del ancho de la ventana</td>
+                            <td><code>font-size: 5vw</code></td>
+                            <td>Titulos que escalan con la pantalla</td>
+                        </tr>
+                        <tr class="fila-responsivo">
+                            <td><code>vh</code></td>
+                            <td>Relativa</td>
+                            <td>1% del alto de la ventana</td>
+                            <td><code>height: 100vh</code></td>
+                            <td>Secciones de pantalla completa</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCION 2: Unidades de viewport          -->
+            <!-- ======================================== -->
+            <section class="seccion">
+                <h2>2. Unidades de Viewport (vw, vh)</h2>
+
+                <p>
+                    <code>vw</code> y <code>vh</code> son relativas al tamaño de la
+                    <strong>ventana del navegador</strong> (viewport).
+                    <code>1vw</code> = 1% del ancho de la ventana.
+                    <code>1vh</code> = 1% del alto de la ventana.
+                </p>
+
+                <div class="demo-viewport">
+                    <div class="caja-vw caja-vw-50">
+                        width: 50vw
+                        <span class="caja-nota">Siempre mide la mitad de la ventana</span>
+                    </div>
+                    <div class="caja-vw caja-vw-25">
+                        width: 25vw
+                        <span class="caja-nota">Siempre mide un cuarto de la ventana</span>
+                    </div>
+                    <div class="caja-vw caja-vw-75">
+                        width: 75vw
+                        <span class="caja-nota">Siempre mide tres cuartos de la ventana</span>
+                    </div>
+                </div>
+
+                <h3>Texto que escala con la ventana</h3>
+                <div class="demo-texto-vw">
+                    <p class="texto-fijo">Este texto tiene font-size: 16px (fijo, no cambia)</p>
+                    <p class="texto-vw">Este texto tiene font-size: 3vw (escala con la ventana)</p>
+                    <p class="texto-clamp">Este texto usa clamp(14px, 2.5vw, 24px) (tiene minimo y maximo)</p>
+                </div>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCION 3: Media Queries                 -->
+            <!-- ======================================== -->
+            <section class="seccion seccion-media-queries">
+                <h2>3. Media Queries</h2>
+
+                <p>
+                    Las <strong>Media Queries</strong> permiten aplicar estilos CSS
+                    <strong>solo cuando se cumple una condicion</strong>. La mas comun
+                    es el ancho de la pantalla:
+                </p>
+
+                <!-- Bloques de codigo CSS -->
+                <div class="codigo-ejemplo">
+                    <div class="codigo-titulo">Sintaxis basica:</div>
+<pre><code>/* Estilos que SOLO se aplican en pantallas de 768px o menos */
+@media (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+    }
+}
+
+/* Estilos que SOLO se aplican en pantallas de 769px o mas */
+@media (min-width: 769px) {
+    .menu {
+        flex-direction: row;
+    }
+}</code></pre>
+                </div>
+
+                <h3>Breakpoints comunes</h3>
+                <p>Los "breakpoints" son los puntos donde el diseño cambia. Estos son los mas usados:</p>
+
+                <div class="breakpoints-visual">
+                    <!--
+                        Cada barra representa un rango de tamaño de pantalla.
+                        Los breakpoints marcan donde cambia el layout.
+                    -->
+                    <div class="bp-barra bp-mobile">
+                        <span class="bp-icono">📱</span>
+                        <span class="bp-nombre">Mobile</span>
+                        <span class="bp-rango">0 - 480px</span>
+                    </div>
+                    <div class="bp-barra bp-mobile-lg">
+                        <span class="bp-icono">📱</span>
+                        <span class="bp-nombre">Mobile Grande</span>
+                        <span class="bp-rango">481 - 768px</span>
+                    </div>
+                    <div class="bp-barra bp-tablet">
+                        <span class="bp-icono">📋</span>
+                        <span class="bp-nombre">Tablet</span>
+                        <span class="bp-rango">769 - 1024px</span>
+                    </div>
+                    <div class="bp-barra bp-desktop">
+                        <span class="bp-icono">💻</span>
+                        <span class="bp-nombre">Desktop</span>
+                        <span class="bp-rango">1025 - 1200px</span>
+                    </div>
+                    <div class="bp-barra bp-wide">
+                        <span class="bp-icono">🖥️</span>
+                        <span class="bp-nombre">Wide</span>
+                        <span class="bp-rango">1201px+</span>
+                    </div>
+                </div>
+
+                <h3>min-width vs max-width</h3>
+                <div class="comparacion-mq">
+                    <div class="mq-ejemplo mq-max">
+                        <h4>max-width (Desktop First)</h4>
+                        <p>Empiezas con estilos de escritorio y vas "bajando":</p>
+<pre><code>/* Base: estilos desktop */
+.columnas { display: flex; }
+
+@media (max-width: 768px) {
+    /* Tablet y menor */
+    .columnas { flex-wrap: wrap; }
+}
+
+@media (max-width: 480px) {
+    /* Mobile */
+    .columnas { flex-direction: column; }
+}</code></pre>
+                    </div>
+                    <div class="mq-ejemplo mq-min">
+                        <h4>min-width (Mobile First) ⭐</h4>
+                        <p>Empiezas con estilos de celular y vas "subiendo":</p>
+<pre><code>/* Base: estilos mobile */
+.columnas { flex-direction: column; }
+
+@media (min-width: 481px) {
+    /* Tablet y mayor */
+    .columnas { flex-wrap: wrap; }
+}
+
+@media (min-width: 769px) {
+    /* Desktop */
+    .columnas { display: flex; }
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCION 4: Layout responsive             -->
+            <!-- ======================================== -->
+            <section class="seccion">
+                <h2>4. Layout que Cambia con el Tamaño</h2>
+
+                <p>
+                    Estas tarjetas cambian su disposicion segun el ancho de la pantalla.
+                    <strong>Redimensiona la ventana</strong> para verlo:
+                </p>
+
+                <div class="grid-responsive">
+                    <!--
+                        En MOBILE: 1 columna (las tarjetas se apilan)
+                        En TABLET: 2 columnas
+                        En DESKTOP: 4 columnas (todas en fila)
+
+                        Esto se logra con media queries en el CSS.
+                    -->
+                    <div class="grid-tarjeta tarjeta-html">
+                        <div class="grid-tarjeta-icono">🏗️</div>
+                        <h3>HTML</h3>
+                        <p>Estructura y contenido de la pagina web.</p>
+                    </div>
+                    <div class="grid-tarjeta tarjeta-css">
+                        <div class="grid-tarjeta-icono">🎨</div>
+                        <h3>CSS</h3>
+                        <p>Estilos, colores y diseño visual.</p>
+                    </div>
+                    <div class="grid-tarjeta tarjeta-js">
+                        <div class="grid-tarjeta-icono">⚡</div>
+                        <h3>JavaScript</h3>
+                        <p>Interactividad y comportamiento dinamico.</p>
+                    </div>
+                    <div class="grid-tarjeta tarjeta-git">
+                        <div class="grid-tarjeta-icono">🔀</div>
+                        <h3>Git</h3>
+                        <p>Control de versiones y colaboracion.</p>
+                    </div>
+                </div>
+
+                <div class="layout-info" id="layout-info">
+                    <!-- Se actualiza con JS para mostrar cuantas columnas hay -->
+                    Redimensiona la ventana para ver como cambia el layout
+                </div>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCION 5: Navegacion responsive         -->
+            <!-- ======================================== -->
+            <section class="seccion">
+                <h2>5. Navegacion Responsive</h2>
+
+                <p>
+                    Uno de los patrones mas comunes: el menu es <strong>horizontal en desktop</strong>
+                    y se convierte en <strong>vertical en mobile</strong>.
+                    Redimensiona la ventana para ver el cambio:
+                </p>
+
+                <div class="demo-nav-container">
+                    <!-- Simulacion de navbar responsive -->
+                    <nav class="demo-nav">
+                        <div class="demo-nav-logo">MiSitio</div>
+                        <div class="demo-nav-links">
+                            <a href="#">Inicio</a>
+                            <a href="#">Productos</a>
+                            <a href="#">Nosotros</a>
+                            <a href="#">Blog</a>
+                            <a href="#">Contacto</a>
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="codigo-ejemplo">
+                    <div class="codigo-titulo">CSS de esta navegacion:</div>
+<pre><code>/* Mobile: links en columna */
+.demo-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Desktop: links en fila */
+@media (min-width: 769px) {
+    .demo-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .demo-nav-links {
+        flex-direction: row;
+        gap: 20px;
+    }
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCION 6: Imagenes responsivas          -->
+            <!-- ======================================== -->
+            <section class="seccion">
+                <h2>6. Imagenes Responsivas</h2>
+
+                <p>
+                    Las imagenes deben adaptarse al contenedor sin desbordarse.
+                    Compara estos dos enfoques:
+                </p>
+
+                <div class="comparacion-imgs">
+                    <div class="comp-img-ejemplo">
+                        <div class="comp-etiqueta comp-fijo">FIJO</div>
+                        <div class="img-fija-container">
+                            <img src="https://placehold.co/800x400?text=width:+800px+(FIJO)" alt="Imagen fija"
+                                 class="img-fija">
+                        </div>
+                        <div class="comp-css"><code>width: 800px; /* Se desborda en pantallas chicas */</code></div>
+                    </div>
+
+                    <div class="comp-img-ejemplo">
+                        <div class="comp-etiqueta comp-responsivo">RESPONSIVO</div>
+                        <div class="img-responsiva-container">
+                            <img src="https://placehold.co/800x400?text=max-width:+100%25+(RESPONSIVO)" alt="Imagen responsiva"
+                                 class="img-responsiva">
+                        </div>
+                        <div class="comp-css"><code>max-width: 100%; height: auto; /* Se adapta siempre */</code></div>
+                    </div>
+                </div>
+
+                <div class="codigo-ejemplo">
+                    <div class="codigo-titulo">Regla de oro para imagenes responsivas:</div>
+<pre><code>img {
+    max-width: 100%;   /* Nunca mas ancha que su contenedor */
+    height: auto;      /* Mantiene la proporcion */
+    display: block;    /* Elimina espacio extra debajo */
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCION 7: Tipografia responsiva         -->
+            <!-- ======================================== -->
+            <section class="seccion">
+                <h2>7. Tipografia Responsiva</h2>
+
+                <p>
+                    Los tamaños de texto tambien deben adaptarse.
+                    Aqui hay 3 tecnicas, de la mas basica a la mas moderna:
+                </p>
+
+                <!-- Tecnica 1: px fijos con media queries -->
+                <div class="demo-tipografia">
+                    <h3>Tecnica 1: px + Media Queries</h3>
+                    <p class="tipo-mq">
+                        Este texto cambia de tamaño con media queries.
+                        Es la tecnica mas basica pero requiere definir cada breakpoint.
+                    </p>
+                    <div class="codigo-ejemplo codigo-inline">
+<pre><code>p { font-size: 14px; }
+
+@media (min-width: 768px) {
+    p { font-size: 16px; }
+}
+@media (min-width: 1024px) {
+    p { font-size: 18px; }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Tecnica 2: vw -->
+                <div class="demo-tipografia">
+                    <h3>Tecnica 2: vw (viewport width)</h3>
+                    <p class="tipo-vw">
+                        Este texto escala proporcionalmente con la ventana.
+                        Cuidado: puede quedar MUY chico o MUY grande.
+                    </p>
+                    <div class="codigo-ejemplo codigo-inline">
+<pre><code>p { font-size: 2vw; }
+/* Problema: en 320px = 6.4px (muy chico!)
+   En 1920px = 38.4px (muy grande!) */</code></pre>
+                    </div>
+                </div>
+
+                <!-- Tecnica 3: clamp() -->
+                <div class="demo-tipografia">
+                    <h3>Tecnica 3: clamp() (La mejor) ⭐</h3>
+                    <p class="tipo-clamp">
+                        Este texto escala fluido pero con un minimo y un maximo.
+                        Es la tecnica mas moderna y recomendada.
+                    </p>
+                    <div class="codigo-ejemplo codigo-inline">
+<pre><code>p { font-size: clamp(14px, 2.5vw, 22px); }
+/*                   ↑       ↑       ↑
+              minimo  |  ideal  |  maximo
+              nunca menos   escala    nunca mas
+              de 14px     con ventana  de 22px  */</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- FOOTER                                       -->
+    <!-- ============================================ -->
+    <footer class="footer">
+        <div class="contenedor">
+            <p>© 2026 - Clase de Responsive Design. Redimensiona la ventana para experimentar.</p>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- JAVASCRIPT: Indicador de tamaño de pantalla  -->
+    <!-- ============================================ -->
+    <script>
+        /*
+            Este script actualiza el indicador superior
+            que muestra el ancho actual de la ventana
+            y el breakpoint correspondiente.
+        */
+
+        var anchoEl = document.getElementById('ancho-pantalla');
+        var bpEl = document.getElementById('breakpoint-actual');
+        var indicador = document.getElementById('indicador');
+        var layoutInfo = document.getElementById('layout-info');
+
+        function actualizarIndicador() {
+            var ancho = window.innerWidth;
+            anchoEl.textContent = ancho + 'px';
+
+            var bp = '';
+            var color = '';
+            var columnas = '';
+
+            if (ancho <= 480) {
+                bp = '📱 Mobile (0-480px)';
+                color = '#e74c3c';
+                columnas = '1 columna — las tarjetas se apilan verticalmente';
+            } else if (ancho <= 768) {
+                bp = '📱 Mobile Grande (481-768px)';
+                color = '#e67e22';
+                columnas = '2 columnas — las tarjetas se organizan en pares';
+            } else if (ancho <= 1024) {
+                bp = '📋 Tablet (769-1024px)';
+                color = '#f39c12';
+                columnas = '4 columnas — todas las tarjetas en una fila';
+            } else if (ancho <= 1200) {
+                bp = '💻 Desktop (1025-1200px)';
+                color = '#27ae60';
+                columnas = '4 columnas — todas las tarjetas en una fila';
+            } else {
+                bp = '🖥️ Wide (1201px+)';
+                color = '#3498db';
+                columnas = '4 columnas — todas las tarjetas en una fila';
+            }
+
+            bpEl.textContent = bp;
+            indicador.style.backgroundColor = color;
+            layoutInfo.textContent = ancho + 'px → ' + columnas;
+        }
+
+        // Ejecutar al cargar y al redimensionar
+        actualizarIndicador();
+        window.addEventListener('resize', actualizarIndicador);
+    </script>
+
+</body>
+</html>

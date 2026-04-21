@@ -1,0 +1,17 @@
+/* 1. Estilo para el cuerpo de la página */
+body {
+    background-color: lightgreen; /*  Cambia a lightblue */
+}
+
+/* 2. Estilo para los títulos */
+h1, h2, h3 {
+    color: blue; /*  Cambia el color de fuente a rojo */
+}
+
+/* 3. Estilo para la imagen */
+img {
+    width: 800px;  /*  Establece 400px */
+    height: 600px; /*  Establece 300px */
+    display: block; /* Tip: Necesario para que el margin auto funcione */
+    margin: auto;   /* Esto centrará tu imagen */
+}

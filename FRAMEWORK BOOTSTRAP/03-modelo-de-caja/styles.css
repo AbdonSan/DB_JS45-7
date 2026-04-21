@@ -1,0 +1,974 @@
+/* ============================================
+   HOJA DE ESTILOS - MODELO DE CAJA (Box Model)
+   ============================================
+
+   En este archivo aprendemos:
+   - Margin, Padding, Border
+   - box-sizing
+   - Width / Height / max-width
+   - Display: block, inline, inline-block
+   - Overflow
+   - Uso de <div> como contenedor
+
+   ============================================ */
+
+
+/* =============================================
+   RESET BASICO Y CONFIGURACION GLOBAL
+   ============================================ */
+
+* {
+    /*
+        El selector * (universal) selecciona TODOS los elementos.
+        box-sizing: border-box hace que el width incluya
+        padding y border. Es una practica comun y recomendada.
+    */
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f0f2f5;
+}
+
+
+/* =============================================
+   CONTENEDOR (wrapper / container)
+   =============================================
+   Un patron muy comun: un div con ancho maximo
+   y margin: auto para centrar el contenido.
+   ============================================ */
+
+.contenedor {
+    max-width: 900px;           /* Ancho maximo */
+    margin-left: auto;          /* Centra horizontalmente... */
+    margin-right: auto;         /* ...empujando margenes iguales a ambos lados */
+    padding-left: 20px;         /* Espacio interno a los lados */
+    padding-right: 20px;        /* para que no toque los bordes en pantallas chicas */
+}
+
+
+/* =============================================
+   HEADER Y NAV
+   ============================================ */
+
+#cabecera {
+    background-color: #2c3e50;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    /*
+        Nota: el padding se aplica al header completo,
+        pero el .contenedor interno centra el nav.
+    */
+}
+
+.menu-principal {
+    text-align: center;
+}
+
+.menu-principal a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;           /* padding: arriba/abajo izquierda/derecha */
+    margin: 0 5px;               /* margen horizontal entre enlaces */
+    border-radius: 4px;
+    display: inline-block;       /* Para que el padding vertical funcione */
+    transition: background-color 0.3s;
+}
+
+.menu-principal a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* =============================================
+   SECCIONES
+   ============================================ */
+
+.seccion {
+    background-color: white;
+    padding: 30px;               /* Espacio DENTRO de la caja */
+    margin-top: 20px;            /* Espacio FUERA, arriba */
+    margin-bottom: 20px;         /* Espacio FUERA, abajo */
+    border-radius: 8px;          /* Esquinas redondeadas */
+    border: 1px solid #e0e0e0;   /* Borde gris sutil */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.seccion h1 {
+    font-size: 2em;
+    color: #2c3e50;
+    margin-top: 0;               /* Quita margen superior por defecto del h1 */
+}
+
+.seccion h2 {
+    font-size: 1.6em;
+    color: #34495e;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 8px;
+    margin-top: 0;
+}
+
+.seccion h3 {
+    font-size: 1.2em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+
+/* =============================================
+   BOX MODEL INTERACTIVO - CONTROLES
+   =============================================
+   Panel de inputs editables para cambiar
+   margin, border, padding y contenido en vivo.
+   ============================================ */
+
+/* =============================================
+   SECCION INTRODUCTORIA
+   ============================================ */
+
+.seccion-intro {
+    border-top: 5px solid #3498db;
+}
+
+.resumen-capas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.resumen-capa {
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.capa-c-margin {
+    background-color: #fce4b8;
+    border-left: 5px solid #e67e22;
+}
+
+.capa-c-border {
+    background-color: #f9d88b;
+    border-left: 5px solid #f39c12;
+}
+
+.capa-c-padding {
+    background-color: #abebc6;
+    border-left: 5px solid #27ae60;
+}
+
+.capa-c-contenido {
+    background-color: #aed6f1;
+    border-left: 5px solid #3498db;
+}
+
+.indice-temas {
+    background-color: #f9f9f9;
+    padding: 15px 15px 15px 35px;
+    border-radius: 6px;
+    border: 1px solid #eee;
+}
+
+.indice-temas li {
+    padding: 4px 0;
+    color: #555;
+}
+
+
+/* =============================================
+   BOX MODEL INTERACTIVO - CONTROLES
+   =============================================
+   Panel de inputs editables para cambiar
+   margin, border, padding y contenido en vivo.
+   ============================================ */
+
+.instruccion {
+    background-color: #eaf2f8;
+    border-left: 4px solid #3498db;
+    padding: 10px 15px;
+    border-radius: 0 5px 5px 0;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.controles-box-model {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.control-grupo {
+    flex: 1;
+    min-width: 200px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    background-color: #fafafa;
+}
+
+.control-titulo {
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Cada titulo tiene el color de su capa */
+.control-titulo-margin   { color: #e67e22; }
+.control-titulo-border   { color: #d35400; }
+.control-titulo-padding  { color: #27ae60; }
+.control-titulo-contenido { color: #2980b9; }
+
+.control-descripcion {
+    font-size: 0.8em;
+    color: #777;
+    margin: 0 0 10px 0;
+}
+
+.control-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.control-campo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.85em;
+}
+
+.control-campo label {
+    font-weight: bold;
+    color: #555;
+    min-width: 45px;
+    display: inline;
+    margin: 0;
+}
+
+.control-campo input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.control-campo input[type="color"] {
+    width: 40px;
+    height: 30px;
+    padding: 2px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.control-campo input[type="text"].input-texto {
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.control-campo select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9em;
+    background-color: white;
+}
+
+.control-shorthand {
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #2c3e50;
+    color: #2ecc71;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.78em;
+    overflow-x: auto;
+}
+
+.control-shorthand code {
+    color: #2ecc71;
+}
+
+
+/* =============================================
+   BOX MODEL INTERACTIVO - PREVIEW EN VIVO
+   =============================================
+   Diagrama visual que se actualiza en tiempo real.
+   Cada capa tiene su color y muestra los valores.
+   ============================================ */
+
+.preview-area {
+    background-color: #ecf0f1;
+    border: 2px dashed #bdc3c7;
+    border-radius: 8px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    overflow: auto;
+}
+
+/* --- Capa MARGIN (naranja) --- */
+.preview-margin {
+    background-color: #fce4b8;
+    position: relative;
+    padding: 20px;
+    transition: padding 0.3s;
+}
+
+.preview-label {
+    position: absolute;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+.preview-label-margin {
+    top: 2px;
+    left: 5px;
+    color: #e67e22;
+}
+
+/* --- Capa BORDER (amarillo) --- */
+.preview-border {
+    background-color: #f9d88b;
+    position: relative;
+    border: 3px solid #2c3e50;
+    border-radius: 8px;
+    transition: border 0.3s, border-radius 0.3s;
+}
+
+.preview-label-border {
+    top: 2px;
+    left: 5px;
+    color: #d35400;
+}
+
+/* --- Capa PADDING (verde) --- */
+.preview-padding {
+    background-color: #abebc6;
+    position: relative;
+    padding: 25px;
+    transition: padding 0.3s;
+}
+
+.preview-label-padding {
+    top: 2px;
+    left: 5px;
+    color: #27ae60;
+}
+
+/* --- Capa CONTENIDO (azul) --- */
+.preview-contenido {
+    background-color: #3498db;
+    width: 200px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    transition: width 0.3s, height 0.3s, background-color 0.3s;
+    position: relative;
+}
+
+.preview-dimensiones {
+    font-size: 0.7em;
+    opacity: 0.8;
+    margin-top: 4px;
+}
+
+/* --- Valores numericos en el diagrama --- */
+.preview-valor {
+    position: absolute;
+    font-size: 0.7em;
+    font-weight: bold;
+    color: #555;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+
+.preview-valor-top    { top: 3px; left: 50%; transform: translateX(-50%); }
+.preview-valor-bottom { bottom: 3px; left: 50%; transform: translateX(-50%); }
+.preview-valor-left   { left: 3px; top: 50%; transform: translateY(-50%); }
+.preview-valor-right  { right: 3px; top: 50%; transform: translateY(-50%); }
+.preview-valor-border { top: 3px; right: 5px; }
+
+
+/* =============================================
+   CALCULO DEL TAMAÑO TOTAL
+   ============================================ */
+
+.calculo-total {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fafafa;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+.calculo-total h3 {
+    margin-top: 0;
+}
+
+.formula {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85em;
+    line-height: 2;
+    padding: 15px;
+    background-color: #2c3e50;
+    color: white;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.formula-parte {
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.formula-margin    { background-color: #e67e22; color: white; }
+.formula-border    { background-color: #f39c12; color: white; }
+.formula-padding   { background-color: #27ae60; color: white; }
+.formula-contenido { background-color: #3498db; color: white; }
+
+
+/* =============================================
+   GALERIA DE BORDES
+   =============================================
+   Diferentes estilos de border disponibles en CSS.
+   ============================================ */
+
+.galeria-bordes {
+    /*
+        Usamos display: flex para poner las cajas en fila.
+        flex-wrap: wrap hace que salten a la siguiente linea
+        si no caben.
+        (Flexbox se vera en detalle mas adelante)
+    */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;                   /* Espacio entre las cajas */
+    margin: 20px 0;
+}
+
+.caja {
+    /*
+        Estilos base compartidos por todas las cajas de ejemplo.
+    */
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: bold;
+    background-color: #fafafa;
+    min-width: 180px;
+    flex: 1;                     /* Las cajas crecen para llenar el espacio */
+}
+
+.borde-solid {
+    border: 3px solid #3498db;
+    /* solid = linea continua */
+}
+
+.borde-dashed {
+    border: 3px dashed #e74c3c;
+    /* dashed = linea de guiones */
+}
+
+.borde-dotted {
+    border: 3px dotted #27ae60;
+    /* dotted = linea de puntos */
+}
+
+.borde-double {
+    border: 5px double #8e44ad;
+    /* double = linea doble (necesita al menos 3px para verse) */
+}
+
+.borde-groove {
+    border: 5px groove #95a5a6;
+    /* groove = efecto 3D hundido */
+}
+
+.borde-ridge {
+    border: 5px ridge #95a5a6;
+    /* ridge = efecto 3D elevado */
+}
+
+.borde-mixto {
+    /*
+        Podemos definir cada lado por separado:
+        border-top, border-right, border-bottom, border-left
+    */
+    border-top: 4px solid #3498db;
+    border-right: 4px dashed #e74c3c;
+    border-bottom: 4px dotted #27ae60;
+    border-left: 4px double #f39c12;
+}
+
+.borde-redondeado {
+    border: 3px solid #3498db;
+    border-radius: 20px;
+    /*
+        border-radius redondea las esquinas.
+        Valores grandes = mas redondo.
+        50% = circulo (si la caja es cuadrada).
+    */
+}
+
+
+/* =============================================
+   MARGIN vs PADDING - COMPARACION
+   ============================================ */
+
+.comparacion-espaciado {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.ejemplo-espaciado {
+    flex: 1;
+    min-width: 200px;
+    background-color: #fadbd8;       /* Fondo rosa = area del margin */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.ejemplo-espaciado h3 {
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    background-color: #e74c3c;
+    color: white;
+    font-size: 1em;
+}
+
+.caja-margin-demo {
+    /*
+        MARGIN grande, padding minimo.
+        El fondo rosa que se ve afuera es el contenedor padre,
+        lo que demuestra que el margin empuja HACIA AFUERA.
+    */
+    background-color: white;
+    border: 3px solid #2c3e50;
+    margin: 30px;                    /* 30px de espacio EXTERNO por todos lados */
+    padding: 10px;                   /* Poco espacio interno */
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.85em;
+}
+
+.caja-padding-demo {
+    /*
+        PADDING grande, margin minimo.
+        El espacio blanco dentro del borde es el padding.
+    */
+    background-color: white;
+    border: 3px solid #2c3e50;
+    margin: 5px;                     /* Poco espacio externo */
+    padding: 30px;                   /* 30px de espacio INTERNO por todos lados */
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.85em;
+}
+
+.caja-ambos-demo {
+    /*
+        Tiene AMBOS: margin y padding amplios.
+    */
+    background-color: white;
+    border: 3px solid #2c3e50;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.85em;
+}
+
+
+/* =============================================
+   BOX-SIZING COMPARACION
+   ============================================ */
+
+.comparacion-boxsizing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.caja-content-box {
+    /*
+        content-box (default del navegador):
+        width = SOLO el contenido
+        Ancho real = width + padding-left + padding-right + border-left + border-right
+        250 + 20 + 20 + 5 + 5 = 300px
+    */
+    box-sizing: content-box;
+    width: 250px;
+    padding: 20px;
+    border: 5px solid #e74c3c;
+    background-color: #fadbd8;
+    font-size: 0.85em;
+    line-height: 1.8;
+}
+
+.caja-border-box {
+    /*
+        border-box:
+        width = contenido + padding + border (TODO incluido)
+        Ancho real = 250px exactos
+    */
+    box-sizing: border-box;
+    width: 250px;
+    padding: 20px;
+    border: 5px solid #27ae60;
+    background-color: #d5f5e3;
+    font-size: 0.85em;
+    line-height: 1.8;
+}
+
+
+/* =============================================
+   WIDTH Y HEIGHT
+   ============================================ */
+
+.galeria-tamanios {
+    margin: 20px 0;
+}
+
+.galeria-tamanios .caja {
+    margin-bottom: 10px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.tamanio-px {
+    width: 200px;
+    /* Ancho FIJO en pixeles. No cambia con el tamaño de pantalla. */
+}
+
+.tamanio-porcentaje {
+    width: 50%;
+    /* 50% del ancho del contenedor padre. RESPONSIVE. */
+}
+
+.tamanio-auto {
+    width: auto;
+    /* El valor por defecto. El elemento ocupa todo el ancho disponible. */
+}
+
+.tamanio-max {
+    max-width: 400px;
+    width: 100%;
+    /*
+        width: 100% intenta ocupar todo el ancho,
+        pero max-width: 400px lo limita.
+        Util para que algo sea responsive pero no crezca demasiado.
+    */
+}
+
+
+/* =============================================
+   DISPLAY: BLOCK vs INLINE vs INLINE-BLOCK
+   ============================================ */
+
+.demo-display {
+    margin: 10px 0 25px 0;
+    padding: 15px;
+    background-color: #eee;
+    border-radius: 5px;
+}
+
+.caja-block {
+    /*
+        display: block (default de div, p, h1, etc.)
+        - Ocupa TODO el ancho disponible
+        - Siempre empieza en una nueva linea
+        - SI acepta width y height
+    */
+    display: block;
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.caja-inline {
+    /*
+        display: inline (default de span, a, strong, em)
+        - Solo ocupa el espacio de su contenido
+        - NO empieza nueva linea (va en la misma linea)
+        - NO acepta width ni height
+        - Padding/margin vertical no empuja otros elementos
+    */
+    display: inline;
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.caja-inline-block {
+    /*
+        display: inline-block (lo mejor de ambos mundos)
+        - Va en la misma linea como inline
+        - PERO SI acepta width, height, margin y padding completos
+        - Muy util para crear botones o elementos en fila
+    */
+    display: inline-block;
+    background-color: #27ae60;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 4px;
+    font-weight: bold;
+    width: 160px;
+    text-align: center;
+}
+
+
+/* =============================================
+   OVERFLOW
+   ============================================ */
+
+.galeria-overflow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.caja-overflow {
+    flex: 1;
+    min-width: 180px;
+    height: 150px;               /* Altura FIJA para forzar el desbordamiento */
+    padding: 15px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    background-color: #eaf2f8;
+}
+
+.caja-overflow h3 {
+    margin-top: 0;
+    font-size: 0.95em;
+    color: #2c3e50;
+}
+
+.caja-overflow p {
+    font-size: 0.85em;
+    margin: 0;
+}
+
+.overflow-visible {
+    overflow: visible;
+    /* DEFAULT: el contenido se desborda y se ve fuera de la caja */
+}
+
+.overflow-hidden {
+    overflow: hidden;
+    /* El contenido que no cabe se OCULTA (se corta) */
+}
+
+.overflow-scroll {
+    overflow: scroll;
+    /* SIEMPRE muestra barras de scroll, aunque no se necesiten */
+}
+
+.overflow-auto {
+    overflow: auto;
+    /* Solo muestra scroll SI el contenido realmente se desborda */
+}
+
+
+/* =============================================
+   TARJETAS (Cards) - Uso practico de divs
+   =============================================
+   Patron muy comun: div.tarjeta con un header y un body.
+   ============================================ */
+
+.tarjeta {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;            /* Para que el border-radius afecte al header */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta-header {
+    /*
+        El header de la tarjeta tiene fondo de color
+        y padding para separar el titulo del borde.
+    */
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+}
+
+.tarjeta-header h3 {
+    margin: 0;                   /* Quita el margen del h3 dentro del header */
+    font-size: 1.1em;
+    color: white;
+}
+
+.tarjeta-body {
+    /*
+        El body tiene padding generoso para que
+        el contenido no toque los bordes.
+    */
+    padding: 20px;
+    background-color: white;
+}
+
+.tarjeta-body table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tarjeta-body th {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    padding: 10px;
+    text-align: left;
+}
+
+.tarjeta-body td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.tarjeta-body ul {
+    padding-left: 20px;
+}
+
+.tarjeta-body li {
+    padding: 5px 0;
+}
+
+
+/* =============================================
+   FORMULARIO DENTRO DE TARJETA
+   ============================================ */
+
+.campo-grupo {
+    /*
+        Cada div.campo-grupo agrupa un label + input.
+        El margin-bottom separa un grupo del siguiente.
+    */
+    margin-bottom: 15px;
+}
+
+.campo-grupo label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.campo-grupo input,
+.campo-grupo textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.campo-grupo input:focus,
+.campo-grupo textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+.campo-grupo textarea {
+    min-height: 80px;
+    resize: vertical;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.botones-grupo {
+    /*
+        Agrupa los botones y los alinea.
+        margin-top da espacio entre el ultimo campo y los botones.
+    */
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    margin-right: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-enviar {
+    background-color: #3498db;
+}
+
+.btn-enviar:hover {
+    background-color: #2980b9;
+}
+
+.btn-limpiar {
+    background-color: #95a5a6;
+}
+
+.btn-limpiar:hover {
+    background-color: #7f8c8d;
+}
+
+
+/* =============================================
+   FOOTER
+   ============================================ */
+
+#pie-pagina {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+#pie-pagina a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+#pie-pagina a:hover {
+    text-decoration: underline;
+}

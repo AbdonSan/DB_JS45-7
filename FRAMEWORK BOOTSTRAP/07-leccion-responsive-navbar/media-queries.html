@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio: Media Queries</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="flexbox.css">
+    <link rel="stylesheet" href="grid.css">
+    <link rel="stylesheet" href="media-queries.css">
+</head>
+
+<body>
+
+    <h1>Media Queries</h1>
+    <p class="instruccion">Los colores y el layout cambian segun el ancho de la pantalla (Mobile First).</p>
+
+    <!-- Indicador de breakpoint actual -->
+    <section>
+        <h2>Indicador de breakpoint</h2>
+        <div class="indicador-breakpoint">
+            Cambia el tamano de la ventana para ver este texto cambiar
+        </div>
+    </section>
+
+    <!-- Flexbox responsivo -->
+    <section>
+        <h2>Flexbox responsivo</h2>
+        <p>Columna en movil, fila en tablet+</p>
+        <div class="flex-container">
+            <div class="caja caja-1">Caja 1</div>
+            <div class="caja caja-2">Caja 2</div>
+            <div class="caja caja-3">Caja 3</div>
+        </div>
+    </section>
+
+    <!-- Grid responsivo -->
+    <section>
+        <h2>Grid responsivo</h2>
+        <p>1 columna en movil, sidebar + contenido en tablet+</p>
+        <div class="grid-layout">
+            <div class="caja header">Header</div>
+            <div class="caja sidebar">Sidebar</div>
+            <div class="caja contenido">Contenido principal</div>
+            <div class="caja footer">Footer</div>
+        </div>
+    </section>
+
+    <!-- Tarjetas responsivas -->
+    <section>
+        <h2>Tarjetas responsivas</h2>
+        <p>1 col movil → 2 col tablet → 3 col desktop</p>
+        <div class="tarjetas-responsivas">
+            <div class="tarjeta">
+                <h3>Tarjeta A</h3>
+                <p>1 columna en movil</p>
+            </div>
+            <div class="tarjeta">
+                <h3>Tarjeta B</h3>
+                <p>2 columnas en tablet</p>
+            </div>
+            <div class="tarjeta">
+                <h3>Tarjeta C</h3>
+                <p>3 columnas en desktop</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

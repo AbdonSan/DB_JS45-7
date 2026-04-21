@@ -1,0 +1,822 @@
+/* ============================================
+   HOJA DE ESTILOS - RESPONSIVE Y MEDIA QUERIES
+   ============================================
+
+   Esta hoja usa la estrategia MOBILE FIRST:
+   - Los estilos base son para pantallas chicas (celular)
+   - Luego usamos @media (min-width) para agregar
+     estilos para pantallas mas grandes
+
+   ============================================ */
+
+
+/* =============================================
+   RESET Y BASE (MOBILE FIRST)
+   =============================================
+   Estos estilos se aplican en TODAS las pantallas.
+   Estan pensados para celular como punto de partida.
+   ============================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f0f2f5;
+    /* font-size base del navegador: 16px */
+}
+
+code {
+    background-color: #2c3e50;
+    color: #2ecc71;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+pre {
+    margin: 0;
+    overflow-x: auto;
+}
+
+pre code {
+    display: block;
+    padding: 15px;
+    line-height: 1.5;
+    white-space: pre;
+}
+
+
+/* =============================================
+   CONTENEDOR
+   ============================================ */
+
+.contenedor {
+    width: 100%;                /* Mobile: ocupa todo el ancho */
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Tablet: un poco mas de padding */
+@media (min-width: 769px) {
+    .contenedor {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+/* Desktop: ancho maximo para que no se estire demasiado */
+@media (min-width: 1025px) {
+    .contenedor {
+        max-width: 1100px;
+    }
+}
+
+
+/* =============================================
+   HEADER
+   ============================================ */
+
+.header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px 0;             /* Mobile: compacto */
+    text-align: center;
+}
+
+.header-titulo {
+    font-size: 1.5em;            /* Mobile: tamaño moderado */
+    margin: 0 0 5px 0;
+}
+
+.header-subtitulo {
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* Tablet: header mas grande */
+@media (min-width: 769px) {
+    .header {
+        padding: 35px 0;
+    }
+    .header-titulo {
+        font-size: 2.2em;
+    }
+    .header-subtitulo {
+        font-size: 1.1em;
+    }
+}
+
+/* Desktop: aun mas grande */
+@media (min-width: 1025px) {
+    .header {
+        padding: 50px 0;
+    }
+    .header-titulo {
+        font-size: 2.8em;
+    }
+}
+
+
+/* =============================================
+   INDICADOR DE PANTALLA (barra sticky superior)
+   ============================================ */
+
+.indicador-pantalla {
+    position: sticky;            /* Se queda "pegado" al hacer scroll */
+    top: 0;
+    z-index: 100;               /* Por encima de todo */
+    background-color: #e74c3c;
+    color: white;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.85em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    /*
+        El color de fondo cambia con JavaScript
+        segun el breakpoint actual.
+    */
+}
+
+.indicador-ancho {
+    font-family: 'Courier New', monospace;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 2px 10px;
+    border-radius: 4px;
+}
+
+
+/* =============================================
+   SECCIONES
+   ============================================ */
+
+.seccion {
+    background-color: white;
+    padding: 20px;               /* Mobile: padding compacto */
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Tablet: mas padding */
+@media (min-width: 769px) {
+    .seccion {
+        padding: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+.seccion h2 {
+    font-size: 1.4em;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 8px;
+    margin-top: 0;
+}
+
+@media (min-width: 769px) {
+    .seccion h2 {
+        font-size: 1.7em;
+    }
+}
+
+.seccion h3 {
+    font-size: 1.1em;
+    color: #34495e;
+    margin-top: 25px;
+}
+
+
+/* =============================================
+   SECCION INTRO
+   ============================================ */
+
+.seccion-intro {
+    border-top: 5px solid #3498db;
+}
+
+.conceptos-clave {
+    display: flex;
+    flex-direction: column;      /* Mobile: apilados */
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.concepto {
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #eaf2f8;
+    border-left: 4px solid #3498db;
+}
+
+.concepto h3 {
+    margin: 0 0 5px 0;
+    font-size: 1em;
+    color: #2c3e50;
+}
+
+.concepto p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* Tablet: conceptos en fila */
+@media (min-width: 769px) {
+    .conceptos-clave {
+        flex-direction: row;
+    }
+    .concepto {
+        flex: 1;
+    }
+}
+
+.indice-temas {
+    background-color: #f9f9f9;
+    padding: 15px 15px 15px 35px;
+    border-radius: 6px;
+    border: 1px solid #eee;
+}
+
+.indice-temas li {
+    padding: 3px 0;
+    color: #555;
+}
+
+
+/* =============================================
+   COMPARACIONES: FIJO vs RESPONSIVO
+   ============================================ */
+
+.comparacion {
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow-x: auto;            /* Scroll horizontal si se desborda */
+}
+
+.comp-ejemplo {
+    margin-bottom: 15px;
+}
+
+.comp-etiqueta {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.comp-fijo {
+    background-color: #e74c3c;
+}
+
+.comp-responsivo {
+    background-color: #27ae60;
+}
+
+/* --- Cajas de ejemplo fijo vs responsivo --- */
+
+.caja-fija-px {
+    width: 600px;                /* FIJO: siempre 600px */
+    padding: 20px;
+    background-color: #fadbd8;
+    border: 2px solid #e74c3c;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.caja-responsiva-porcentaje {
+    width: 80%;                  /* RESPONSIVO: 80% del padre */
+    padding: 20px;
+    background-color: #d5f5e3;
+    border: 2px solid #27ae60;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.caja-fija-ancho {
+    width: 500px;
+    padding: 20px;
+    background-color: #fadbd8;
+    border: 2px solid #e74c3c;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.caja-responsiva-max {
+    width: 100%;
+    max-width: 500px;            /* RESPONSIVO: crece hasta 500px */
+    padding: 20px;
+    background-color: #d5f5e3;
+    border: 2px solid #27ae60;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.caja-nota {
+    display: block;
+    font-weight: normal;
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 5px;
+}
+
+
+/* =============================================
+   TABLA DE UNIDADES
+   ============================================ */
+
+.tabla-responsive {
+    /*
+        Envolvemos la tabla en un div con overflow-x: auto
+        para que en mobile se pueda scrollear horizontalmente
+        sin romper el layout de la pagina.
+    */
+    overflow-x: auto;
+    margin: 15px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.tabla-unidades {
+    width: 100%;
+    min-width: 600px;            /* Ancho minimo para que no se aplaste */
+    border-collapse: collapse;
+}
+
+.tabla-unidades th {
+    background-color: #2c3e50;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-size: 0.85em;
+}
+
+.tabla-unidades td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.85em;
+}
+
+.fila-fijo {
+    background-color: #fdf2f0;
+}
+
+.fila-responsivo {
+    background-color: #f0faf3;
+}
+
+.fila-responsivo:nth-child(even) {
+    background-color: #e8f8ec;
+}
+
+
+/* =============================================
+   DEMO VIEWPORT (vw, vh)
+   ============================================ */
+
+.demo-viewport {
+    margin: 15px 0;
+}
+
+.caja-vw {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: white;
+}
+
+.caja-vw-50 {
+    width: 50vw;
+    background-color: #3498db;
+}
+
+.caja-vw-25 {
+    width: 25vw;
+    background-color: #9b59b6;
+}
+
+.caja-vw-75 {
+    width: 75vw;
+    background-color: #1abc9c;
+}
+
+/* --- Texto que escala --- */
+
+.demo-texto-vw {
+    margin: 15px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.texto-fijo {
+    font-size: 16px;             /* FIJO: siempre 16px */
+    padding: 10px;
+    background-color: #fadbd8;
+    border-left: 4px solid #e74c3c;
+    margin-bottom: 10px;
+    border-radius: 0 5px 5px 0;
+}
+
+.texto-vw {
+    font-size: 3vw;              /* VIEWPORT: escala con la ventana */
+    padding: 10px;
+    background-color: #fef9e7;
+    border-left: 4px solid #f39c12;
+    margin-bottom: 10px;
+    border-radius: 0 5px 5px 0;
+}
+
+.texto-clamp {
+    font-size: clamp(14px, 2.5vw, 24px);  /* CLAMP: minimo, ideal, maximo */
+    padding: 10px;
+    background-color: #d5f5e3;
+    border-left: 4px solid #27ae60;
+    border-radius: 0 5px 5px 0;
+}
+
+
+/* =============================================
+   BLOQUES DE CODIGO
+   ============================================ */
+
+.codigo-ejemplo {
+    margin: 15px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #34495e;
+}
+
+.codigo-titulo {
+    background-color: #34495e;
+    color: #ecf0f1;
+    padding: 8px 15px;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+.codigo-inline {
+    margin-top: 10px;
+}
+
+
+/* =============================================
+   MEDIA QUERIES - BREAKPOINTS VISUAL
+   ============================================ */
+
+.breakpoints-visual {
+    margin: 20px 0;
+}
+
+.bp-barra {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 0.9em;
+}
+
+.bp-icono {
+    font-size: 1.3em;
+}
+
+.bp-nombre {
+    font-weight: bold;
+    flex: 1;
+}
+
+.bp-rango {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85em;
+    opacity: 0.9;
+}
+
+.bp-mobile     { background-color: #e74c3c; }
+.bp-mobile-lg  { background-color: #e67e22; }
+.bp-tablet     { background-color: #f39c12; }
+.bp-desktop    { background-color: #27ae60; }
+.bp-wide       { background-color: #3498db; }
+
+/* --- Comparacion min-width vs max-width --- */
+
+.comparacion-mq {
+    display: flex;
+    flex-direction: column;      /* Mobile: apilados */
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.mq-ejemplo {
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.mq-ejemplo h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1em;
+}
+
+.mq-ejemplo > p {
+    font-size: 0.85em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.mq-max {
+    background-color: #fdf2f0;
+    border: 2px solid #e74c3c;
+}
+
+.mq-min {
+    background-color: #f0faf3;
+    border: 2px solid #27ae60;
+}
+
+/* Tablet: comparacion lado a lado */
+@media (min-width: 769px) {
+    .comparacion-mq {
+        flex-direction: row;
+    }
+    .mq-ejemplo {
+        flex: 1;
+    }
+}
+
+
+/* =============================================
+   GRID RESPONSIVE (tarjetas que cambian layout)
+   =============================================
+   MOBILE FIRST:
+   - Base (mobile): 1 columna
+   - 481px+ (mobile grande): 2 columnas
+   - 769px+ (tablet/desktop): 4 columnas
+   ============================================ */
+
+.grid-responsive {
+    display: grid;
+    grid-template-columns: 1fr;      /* Mobile: 1 columna */
+    gap: 15px;
+    margin: 20px 0;
+}
+
+/* Mobile grande: 2 columnas */
+@media (min-width: 481px) {
+    .grid-responsive {
+        grid-template-columns: 1fr 1fr;  /* 2 columnas iguales */
+    }
+}
+
+/* Tablet/Desktop: 4 columnas */
+@media (min-width: 769px) {
+    .grid-responsive {
+        grid-template-columns: repeat(4, 1fr);  /* 4 columnas iguales */
+    }
+}
+
+.grid-tarjeta {
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    transition: transform 0.2s;
+}
+
+.grid-tarjeta:hover {
+    transform: translateY(-3px);
+}
+
+.grid-tarjeta-icono {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.grid-tarjeta h3 {
+    margin: 0 0 8px 0;
+    color: white;
+}
+
+.grid-tarjeta p {
+    margin: 0;
+    font-size: 0.85em;
+    opacity: 0.9;
+}
+
+.tarjeta-html { background-color: #e74c3c; }
+.tarjeta-css  { background-color: #3498db; }
+.tarjeta-js   { background-color: #f39c12; }
+.tarjeta-git  { background-color: #9b59b6; }
+
+.layout-info {
+    text-align: center;
+    padding: 10px;
+    background-color: #2c3e50;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.85em;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+}
+
+
+/* =============================================
+   NAVEGACION RESPONSIVE (demo)
+   ============================================ */
+
+.demo-nav-container {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.demo-nav {
+    background-color: #2c3e50;
+    padding: 15px;
+}
+
+.demo-nav-logo {
+    color: white;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 10px;         /* Mobile: espacio debajo del logo */
+}
+
+.demo-nav-links {
+    display: flex;
+    flex-direction: column;      /* Mobile: links en columna */
+    gap: 5px;
+}
+
+.demo-nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.demo-nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Tablet/Desktop: nav en fila horizontal */
+@media (min-width: 769px) {
+    .demo-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .demo-nav-logo {
+        margin-bottom: 0;
+    }
+    .demo-nav-links {
+        flex-direction: row;     /* Desktop: links en fila */
+        gap: 5px;
+    }
+}
+
+
+/* =============================================
+   IMAGENES RESPONSIVAS
+   ============================================ */
+
+.comparacion-imgs {
+    margin: 15px 0;
+}
+
+.comp-img-ejemplo {
+    margin-bottom: 20px;
+}
+
+.img-fija-container {
+    overflow-x: auto;            /* Si la imagen se desborda, scroll horizontal */
+    padding: 10px;
+    background-color: #fdf2f0;
+    border-radius: 5px;
+    margin: 8px 0;
+}
+
+.img-fija {
+    width: 800px;                /* FIJO: siempre 800px (se desborda) */
+    display: block;
+}
+
+.img-responsiva-container {
+    padding: 10px;
+    background-color: #f0faf3;
+    border-radius: 5px;
+    margin: 8px 0;
+}
+
+.img-responsiva {
+    max-width: 100%;             /* RESPONSIVO: nunca se desborda */
+    height: auto;                /* Mantiene proporcion */
+    display: block;
+}
+
+.comp-css {
+    font-size: 0.85em;
+    margin-top: 5px;
+}
+
+
+/* =============================================
+   TIPOGRAFIA RESPONSIVA
+   ============================================ */
+
+.demo-tipografia {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.demo-tipografia h3 {
+    margin-top: 0;
+}
+
+/* Tecnica 1: Media queries */
+.tipo-mq {
+    font-size: 14px;             /* Mobile: 14px */
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    border-left: 4px solid #3498db;
+}
+
+@media (min-width: 768px) {
+    .tipo-mq {
+        font-size: 16px;         /* Tablet: 16px */
+    }
+}
+
+@media (min-width: 1024px) {
+    .tipo-mq {
+        font-size: 18px;         /* Desktop: 18px */
+    }
+}
+
+/* Tecnica 2: vw */
+.tipo-vw {
+    font-size: 2vw;              /* Escala con la ventana, sin limite */
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    border-left: 4px solid #f39c12;
+}
+
+/* Tecnica 3: clamp() */
+.tipo-clamp {
+    font-size: clamp(14px, 2.5vw, 22px);  /* Minimo 14px, ideal 2.5vw, maximo 22px */
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    border-left: 4px solid #27ae60;
+}
+
+
+/* =============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    font-size: 0.9em;
+}

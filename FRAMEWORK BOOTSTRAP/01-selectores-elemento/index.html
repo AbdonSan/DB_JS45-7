@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--
+    DOCTYPE le dice al navegador que este documento es HTML5.
+    Siempre debe ser la primera linea de cualquier archivo HTML.
+-->
+
+<html lang="es">
+<!--
+    <html> es la etiqueta raiz que contiene TODO el documento.
+    El atributo lang="es" indica que el contenido esta en espanol.
+    Esto ayuda a los lectores de pantalla y a los motores de busqueda.
+-->
+
+<head>
+    <!--
+        <head> contiene informacion SOBRE la pagina (metadatos).
+        Nada de lo que esta aqui se ve directamente en la pagina.
+    -->
+
+    <meta charset="UTF-8">
+    <!--
+        charset="UTF-8" permite usar caracteres especiales como
+        tildes (á, é, í), ñ, emojis, etc.
+    -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+        viewport hace que la pagina se adapte al tamaño de la pantalla.
+        Es esencial para que se vea bien en celulares.
+    -->
+
+    <title>Mi Primera Pagina - Selectores de Elemento</title>
+    <!--
+        <title> define el texto que aparece en la pestaña del navegador.
+    -->
+
+    <link rel="stylesheet" href="styles.css">
+    <!--
+        <link> conecta una hoja de estilos CSS externa.
+        rel="stylesheet" indica que es una hoja de estilos.
+        href="styles.css" es la ruta al archivo CSS.
+    -->
+</head>
+
+<body>
+    <!--
+        <body> contiene TODO el contenido visible de la pagina.
+        Aqui va todo lo que el usuario ve e interactua.
+    -->
+
+    <!-- ============================================ -->
+    <!-- HEADER: Cabecera de la pagina                -->
+    <!-- ============================================ -->
+    <header>
+        <!--
+            <header> es una etiqueta semantica que representa
+            la cabecera de la pagina o de una seccion.
+            "Semantica" significa que su nombre describe su proposito.
+        -->
+
+        <nav>
+            <!--
+                <nav> representa un bloque de navegacion.
+                Aqui van los enlaces principales del sitio.
+            -->
+            <a href="#inicio">Inicio</a>
+            <a href="#sobre-mi">Sobre Mi</a>
+            <a href="#habilidades">Habilidades</a>
+            <a href="#contacto">Contacto</a>
+            <!--
+                <a> es un enlace (ancla).
+                href="#inicio" lleva a la seccion con id="inicio" en la misma pagina.
+            -->
+        </nav>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- MAIN: Contenido principal de la pagina       -->
+    <!-- ============================================ -->
+    <main>
+        <!--
+            <main> contiene el contenido principal y unico de la pagina.
+            Solo debe haber UN <main> por pagina.
+        -->
+
+        <!-- --- Seccion: Inicio --- -->
+        <section>
+            <!--
+                <section> agrupa contenido relacionado tematicamente.
+                Cada seccion suele tener su propio encabezado.
+            -->
+
+            <h1>Bienvenidos a Mi Pagina Web</h1>
+            <!--
+                <h1> es el encabezado principal. Solo debe haber UNO por pagina.
+                Los encabezados van de <h1> (mas importante) a <h6> (menos importante).
+            -->
+
+            <p>
+                Esta es mi primera pagina web. Aqui estoy aprendiendo
+                <strong>HTML</strong> y <em>CSS</em> desde cero.
+            </p>
+            <!--
+                <p> define un parrafo de texto.
+                <strong> hace el texto importante (se ve en negritas).
+                <em> da enfasis al texto (se ve en cursiva/italica).
+            -->
+
+            <p>
+                HTML es el <span>lenguaje de marcado</span> que estructura el contenido,
+                mientras que CSS se encarga de darle estilo y presentacion visual.
+            </p>
+            <!--
+                <span> es un contenedor en linea sin significado propio.
+                Sirve para agrupar texto cuando queremos aplicarle estilos.
+            -->
+
+            <img src="https://placehold.co/600x300?text=Mi+Imagen" alt="Imagen de ejemplo">
+            <!--
+                <img> muestra una imagen. Es una etiqueta que NO tiene cierre.
+                src="..." es la ruta o URL de la imagen.
+                alt="..." es el texto alternativo que describe la imagen
+                (aparece si la imagen no carga y es leido por lectores de pantalla).
+            -->
+        </section>
+
+        <!-- --- Seccion: Sobre Mi --- -->
+        <section>
+            <h2>Sobre Mi</h2>
+            <!-- <h2> es un subtitulo. Se usa para secciones dentro de la pagina. -->
+
+            <p>
+                Soy estudiante de desarrollo web. Me interesa aprender
+                tecnologias modernas para crear sitios web increibles.
+            </p>
+
+            <h3>Datos Personales</h3>
+            <!-- <h3> es un sub-subtitulo. Mas especifico que <h2>. -->
+
+            <!-- --- Tabla --- -->
+            <table>
+                <!--
+                    <table> crea una tabla para mostrar datos tabulares.
+                    Las tablas tienen filas (<tr>) con celdas de encabezado (<th>)
+                    o celdas de datos (<td>).
+                -->
+                <tr>
+                    <!-- <tr> = table row (fila de tabla) -->
+                    <th>Campo</th>
+                    <th>Valor</th>
+                    <!-- <th> = table header (celda de encabezado, texto en negritas) -->
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td>Estudiante Web</td>
+                    <!-- <td> = table data (celda de datos) -->
+                </tr>
+                <tr>
+                    <td>Edad</td>
+                    <td>25 anios</td>
+                </tr>
+                <tr>
+                    <td>Ciudad</td>
+                    <td>Ciudad de Mexico</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- --- Seccion: Habilidades --- -->
+        <section>
+            <h2>Mis Habilidades</h2>
+
+            <p>Estas son las tecnologias que estoy aprendiendo:</p>
+
+            <!-- --- Lista desordenada --- -->
+            <ul>
+                <!--
+                    <ul> = unordered list (lista con viñetas/puntos).
+                    Cada elemento de la lista va dentro de <li>.
+                -->
+                <li>HTML - Estructura</li>
+                <li>CSS - Estilos</li>
+                <li>JavaScript - Interactividad</li>
+                <li>Git - Control de versiones</li>
+                <!-- <li> = list item (elemento de lista) -->
+            </ul>
+
+            <p>Mi plan de aprendizaje paso a paso:</p>
+
+            <!-- --- Lista ordenada --- -->
+            <ol>
+                <!--
+                    <ol> = ordered list (lista numerada).
+                    Igual que <ul> pero con numeros en vez de puntos.
+                -->
+                <li>Aprender HTML basico</li>
+                <li>Dominar CSS</li>
+                <li>Practicar JavaScript</li>
+                <li>Crear proyectos reales</li>
+            </ol>
+        </section>
+
+        <!-- --- Seccion: Contacto --- -->
+        <section>
+            <h2>Contacto</h2>
+
+            <p>Enviame un mensaje a traves de este formulario:</p>
+
+            <!-- --- Formulario --- -->
+            <form>
+                <!--
+                    <form> agrupa campos de entrada de datos.
+                    Normalmente tiene un atributo action="..." que indica
+                    a donde enviar los datos (lo omitimos por ahora).
+                -->
+
+                <label>Nombre:</label>
+                <!--
+                    <label> describe un campo del formulario.
+                    Mejora la accesibilidad indicando que dato se espera.
+                -->
+                <input type="text" placeholder="Tu nombre">
+                <!--
+                    <input> es un campo de entrada. No tiene etiqueta de cierre.
+                    type="text" indica que es un campo de texto.
+                    placeholder="..." muestra un texto de ayuda dentro del campo.
+                -->
+
+                <label>Email:</label>
+                <input type="email" placeholder="tu@email.com">
+                <!-- type="email" valida que el texto tenga formato de correo -->
+
+                <label>Mensaje:</label>
+                <textarea placeholder="Escribe tu mensaje aqui..."></textarea>
+                <!--
+                    <textarea> es un campo de texto multilinea.
+                    A diferencia de <input>, este SI tiene etiqueta de cierre.
+                -->
+
+                <button>Enviar</button>
+                <!--
+                    <button> crea un boton clickeable.
+                    Dentro de un <form>, por defecto envia el formulario.
+                -->
+            </form>
+        </section>
+    </main>
+
+    <!-- ============================================ -->
+    <!-- FOOTER: Pie de pagina                        -->
+    <!-- ============================================ -->
+    <footer>
+        <!--
+            <footer> es la parte inferior de la pagina.
+            Usualmente contiene derechos de autor, enlaces legales, etc.
+        -->
+        <p>© 2026 - Mi Primera Pagina Web. Todos los derechos reservados.</p>
+        <p>
+            Sigueme en
+            <a href="https://github.com" target="_blank">GitHub</a>
+        </p>
+        <!--
+            target="_blank" abre el enlace en una nueva pestaña del navegador.
+        -->
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<!--
+    CARPETA 03 - MODELO DE CAJA (Box Model)
+    ========================================
+    En este ejemplo aprendemos que TODOS los elementos HTML
+    son "cajas" rectangulares compuestas por:
+
+    ┌─────────────────────────────────┐
+    │           MARGIN                │  ← Espacio EXTERNO (separa de otros elementos)
+    │  ┌───────────────────────────┐  │
+    │  │        BORDER             │  │  ← Borde visible de la caja
+    │  │  ┌─────────────────────┐  │  │
+    │  │  │     PADDING         │  │  │  ← Espacio INTERNO (entre borde y contenido)
+    │  │  │  ┌───────────────┐  │  │  │
+    │  │  │  │   CONTENIDO   │  │  │  │  ← El texto, imagen, etc.
+    │  │  │  └───────────────┘  │  │  │
+    │  │  └─────────────────────┘  │  │
+    │  └───────────────────────────┘  │
+    └─────────────────────────────────┘
+
+    Tambien usamos <div> como contenedores genericos
+    para agrupar y organizar el contenido.
+-->
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primera Pagina - Modelo de Caja</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ============================================ -->
+    <!-- HEADER con div interno para centrar contenido -->
+    <!-- ============================================ -->
+    <header id="cabecera">
+        <div class="contenedor">
+            <!--
+                <div> es un contenedor generico de BLOQUE.
+                No tiene significado semantico, pero es muy util
+                para agrupar elementos y controlar el layout.
+
+                Aqui lo usamos como "wrapper" para centrar y
+                limitar el ancho del contenido interno.
+            -->
+            <nav class="menu-principal">
+                <a href="#inicio">Inicio</a>
+                <a href="#sobre-mi">Sobre Mi</a>
+                <a href="#habilidades">Habilidades</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- MAIN envuelto en un div contenedor           -->
+    <!-- ============================================ -->
+    <div class="contenedor">
+        <!--
+            Este div.contenedor limita el ancho maximo
+            y centra todo el contenido principal.
+        -->
+
+        <main>
+
+            <!-- ======================================== -->
+            <!-- SECCION: Introduccion                    -->
+            <!-- ======================================== -->
+            <section class="seccion seccion-intro">
+                <h1>El Modelo de Caja (Box Model)</h1>
+
+                <p>
+                    En CSS, <strong>absolutamente todo es una caja</strong>. Cada etiqueta HTML
+                    (un parrafo, un titulo, una imagen, un boton) se renderiza como un
+                    rectangulo invisible al que podemos controlar su tamaño, su espacio
+                    interno, su borde y su separacion con otros elementos.
+                </p>
+
+                <p>
+                    El <strong>Box Model</strong> (modelo de caja) es el concepto mas
+                    importante de CSS para entender el layout de una pagina.
+                    Se compone de 4 capas, de afuera hacia adentro:
+                </p>
+
+                <div class="resumen-capas">
+                    <div class="resumen-capa capa-c-margin">
+                        <strong>1. Margin</strong> - Espacio externo transparente que separa la caja de otros elementos.
+                    </div>
+                    <div class="resumen-capa capa-c-border">
+                        <strong>2. Border</strong> - El borde visible de la caja. Puede tener grosor, estilo y color.
+                    </div>
+                    <div class="resumen-capa capa-c-padding">
+                        <strong>3. Padding</strong> - Espacio interno entre el borde y el contenido. Es como el "acolchado".
+                    </div>
+                    <div class="resumen-capa capa-c-contenido">
+                        <strong>4. Contenido</strong> - El texto, imagen o elementos que vive dentro de la caja.
+                    </div>
+                </div>
+
+                <p>
+                    En esta leccion vamos a explorar cada una de estas capas con
+                    ejemplos visuales e interactivos. Al final vas a poder controlar
+                    con precision como se ve y como se posiciona cualquier elemento.
+                </p>
+
+                <p>
+                    <strong>Contenido de esta pagina:</strong>
+                </p>
+                <ol class="indice-temas">
+                    <li>Box Model interactivo (editable en vivo)</li>
+                    <li>Tipos de bordes</li>
+                    <li>Margin vs Padding</li>
+                    <li>box-sizing: content-box vs border-box</li>
+                    <li>Width y Height (ancho y alto)</li>
+                    <li>Display: block vs inline vs inline-block</li>
+                    <li>Overflow (contenido desbordado)</li>
+                </ol>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCION: Box Model INTERACTIVO           -->
+            <!-- ======================================== -->
+            <section class="seccion">
+                <h2>Box Model Interactivo</h2>
+
+                <p>
+                    Usa los controles de abajo para modificar cada propiedad de la caja.
+                    Observa como cambia el diagrama en tiempo real y revisa el
+                    <strong>CSS generado</strong> y el <strong>calculo del tamaño total</strong>.
+                </p>
+
+                <p class="instruccion">
+                    Cambia los valores en los campos de texto para ver
+                    como afectan a la caja en tiempo real:
+                </p>
+
+                <!-- ======================================== -->
+                <!-- CONTROLES EDITABLES                      -->
+                <!-- ======================================== -->
+                <div class="controles-box-model">
+                    <!--
+                        Cada grupo de controles permite editar
+                        los 4 lados de una propiedad CSS.
+                        Los valores se aplican en tiempo real
+                        a la caja de preview de abajo.
+                    -->
+
+                    <!-- --- Controles de MARGIN --- -->
+                    <div class="control-grupo" data-propiedad="margin">
+                        <h3 class="control-titulo control-titulo-margin">margin</h3>
+                        <p class="control-descripcion">Espacio EXTERNO - separa la caja de otros elementos</p>
+                        <div class="control-inputs">
+                            <div class="control-campo">
+                                <label>top</label>
+                                <input type="number" id="margin-top" value="20" min="0" max="100"> px
+                            </div>
+                            <div class="control-campo">
+                                <label>right</label>
+                                <input type="number" id="margin-right" value="20" min="0" max="100"> px
+                            </div>
+                            <div class="control-campo">
+                                <label>bottom</label>
+                                <input type="number" id="margin-bottom" value="20" min="0" max="100"> px
+                            </div>
+                            <div class="control-campo">
+                                <label>left</label>
+                                <input type="number" id="margin-left" value="20" min="0" max="100"> px
+                            </div>
+                        </div>
+                        <div class="control-shorthand">
+                            <!--
+                                Aqui mostramos la propiedad CSS abreviada
+                                que corresponde a los valores ingresados.
+                            -->
+                            CSS: <code id="css-margin">margin: 20px 20px 20px 20px;</code>
+                        </div>
+                    </div>
+
+                    <!-- --- Controles de BORDER --- -->
+                    <div class="control-grupo" data-propiedad="border">
+                        <h3 class="control-titulo control-titulo-border">border</h3>
+                        <p class="control-descripcion">El borde visible de la caja (grosor, estilo, color)</p>
+                        <div class="control-inputs">
+                            <div class="control-campo">
+                                <label>grosor</label>
+                                <input type="number" id="border-width" value="3" min="0" max="20"> px
+                            </div>
+                            <div class="control-campo">
+                                <label>estilo</label>
+                                <select id="border-style">
+                                    <option value="solid">solid</option>
+                                    <option value="dashed">dashed</option>
+                                    <option value="dotted">dotted</option>
+                                    <option value="double">double</option>
+                                    <option value="groove">groove</option>
+                                    <option value="ridge">ridge</option>
+                                    <option value="none">none</option>
+                                </select>
+                            </div>
+                            <div class="control-campo">
+                                <label>color</label>
+                                <input type="color" id="border-color" value="#2c3e50">
+                            </div>
+                            <div class="control-campo">
+                                <label>radius</label>
+                                <input type="number" id="border-radius" value="8" min="0" max="100"> px
+                            </div>
+                        </div>
+                        <div class="control-shorthand">
+                            CSS: <code id="css-border">border: 3px solid #2c3e50; border-radius: 8px;</code>
+                        </div>
+                    </div>
+
+                    <!-- --- Controles de PADDING --- -->
+                    <div class="control-grupo" data-propiedad="padding">
+                        <h3 class="control-titulo control-titulo-padding">padding</h3>
+                        <p class="control-descripcion">Espacio INTERNO - separa el borde del contenido</p>
+                        <div class="control-inputs">
+                            <div class="control-campo">
+                                <label>top</label>
+                                <input type="number" id="padding-top" value="25" min="0" max="100"> px
+                            </div>
+                            <div class="control-campo">
+                                <label>right</label>
+                                <input type="number" id="padding-right" value="25" min="0" max="100"> px
+                            </div>
+                            <div class="control-campo">
+                                <label>bottom</label>
+                                <input type="number" id="padding-bottom" value="25" min="0" max="100"> px
+                            </div>
+                            <div class="control-campo">
+                                <label>left</label>
+                                <input type="number" id="padding-left" value="25" min="0" max="100"> px
+                            </div>
+                        </div>
+                        <div class="control-shorthand">
+                            CSS: <code id="css-padding">padding: 25px 25px 25px 25px;</code>
+                        </div>
+                    </div>
+
+                    <!-- --- Controles de CONTENIDO --- -->
+                    <div class="control-grupo" data-propiedad="contenido">
+                        <h3 class="control-titulo control-titulo-contenido">contenido</h3>
+                        <p class="control-descripcion">El tamaño del contenido mismo (width y height)</p>
+                        <div class="control-inputs">
+                            <div class="control-campo">
+                                <label>width</label>
+                                <input type="number" id="content-width" value="200" min="50" max="500"> px
+                            </div>
+                            <div class="control-campo">
+                                <label>height</label>
+                                <input type="number" id="content-height" value="80" min="30" max="300"> px
+                            </div>
+                            <div class="control-campo">
+                                <label>color fondo</label>
+                                <input type="color" id="content-bg" value="#3498db">
+                            </div>
+                            <div class="control-campo">
+                                <label>texto</label>
+                                <input type="text" id="content-text" value="CONTENIDO" class="input-texto">
+                            </div>
+                        </div>
+                        <div class="control-shorthand">
+                            CSS: <code id="css-content">width: 200px; height: 80px;</code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======================================== -->
+                <!-- PREVIEW EN VIVO DEL BOX MODEL            -->
+                <!-- ======================================== -->
+                <h3>Vista previa en vivo:</h3>
+
+                <div class="preview-area">
+                    <!--
+                        Esta es el area gris donde se renderiza la caja.
+                        Las etiquetas muestran los valores actuales de cada capa.
+                    -->
+
+                    <!-- Capa MARGIN (naranja) -->
+                    <div class="preview-margin" id="preview-margin">
+                        <span class="preview-label preview-label-margin">margin</span>
+                        <span class="preview-valor preview-valor-top" id="val-margin-top">20</span>
+                        <span class="preview-valor preview-valor-right" id="val-margin-right">20</span>
+                        <span class="preview-valor preview-valor-bottom" id="val-margin-bottom">20</span>
+                        <span class="preview-valor preview-valor-left" id="val-margin-left">20</span>
+
+                        <!-- Capa BORDER (amarillo) -->
+                        <div class="preview-border" id="preview-border">
+                            <span class="preview-label preview-label-border">border</span>
+                            <span class="preview-valor preview-valor-border" id="val-border">3px</span>
+
+                            <!-- Capa PADDING (verde) -->
+                            <div class="preview-padding" id="preview-padding">
+                                <span class="preview-label preview-label-padding">padding</span>
+                                <span class="preview-valor preview-valor-top" id="val-padding-top">25</span>
+                                <span class="preview-valor preview-valor-right" id="val-padding-right">25</span>
+                                <span class="preview-valor preview-valor-bottom" id="val-padding-bottom">25</span>
+                                <span class="preview-valor preview-valor-left" id="val-padding-left">25</span>
+
+                                <!-- Capa CONTENIDO (azul) -->
+                                <div class="preview-contenido" id="preview-contenido">
+                                    <span id="preview-texto">CONTENIDO</span>
+                                    <span class="preview-dimensiones" id="val-dimensiones">200 x 80</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tamaño total calculado -->
+                <div class="calculo-total">
+                    <h3>Tamaño total de la caja:</h3>
+                    <div class="formula" id="formula">
+                        <!--
+                            Esta formula se actualiza automaticamente
+                            para mostrar como se calcula el tamaño total.
+                        -->
+                        <span class="formula-parte formula-margin">margin-left(20)</span> +
+                        <span class="formula-parte formula-border">border(3)</span> +
+                        <span class="formula-parte formula-padding">padding-left(25)</span> +
+                        <span class="formula-parte formula-contenido">width(200)</span> +
+                        <span class="formula-parte formula-padding">padding-right(25)</span> +
+                        <span class="formula-parte formula-border">border(3)</span> +
+                        <span class="formula-parte formula-margin">margin-right(20)</span>
+                        = <strong id="total-ancho">296px</strong>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCION: Tipos de bordes                 -->
+            <!-- ======================================== -->
+            <section class="seccion">
+                <h2>Tipos de Bordes</h2>
+
+                <p>La propiedad <strong>border</strong> tiene 3 partes: grosor, estilo y color.</p>
+
+                <div class="galeria-bordes">
+                    <!--
+                        Usamos divs como "tarjetas" para mostrar
+                        cada tipo de borde. Cada div es una caja
+                        independiente.
+                    -->
+                    <div class="caja borde-solid">solid (solido)</div>
+                    <div class="caja borde-dashed">dashed (guiones)</div>
+                    <div class="caja borde-dotted">dotted (puntos)</div>
+                    <div class="caja borde-double">double (doble)</div>
+                    <div class="caja borde-groove">groove (3D hundido)</div>
+                    <div class="caja borde-ridge">ridge (3D elevado)</div>
+                    <div class="caja borde-mixto">bordes mixtos</div>
+                    <div class="caja borde-redondeado">border-radius</div>
+                </div>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCION: Margin y Padding                -->
+            <!-- ======================================== -->
+            <section class="seccion">
+                <h2>Margin vs Padding</h2>
+
+                <p>
+                    <strong>Margin</strong> = espacio FUERA de la caja (separa de otros elementos).<br>
+                    <strong>Padding</strong> = espacio DENTRO de la caja (separa el borde del contenido).
+                </p>
+
+                <div class="comparacion-espaciado">
+
+                    <div class="ejemplo-espaciado">
+                        <h3>Solo Margin</h3>
+                        <div class="caja-margin-demo">
+                            <!--
+                                Esta caja tiene margin grande
+                                pero padding cero.
+                                Nota como el espacio esta FUERA del borde.
+                            -->
+                            Tengo margin: 30px
+                        </div>
+                    </div>
+
+                    <div class="ejemplo-espaciado">
+                        <h3>Solo Padding</h3>
+                        <div class="caja-padding-demo">
+                            <!--
+                                Esta caja tiene padding grande
+                                pero margin minimo.
+                                Nota como el espacio esta DENTRO del borde.
+                            -->
+                            Tengo padding: 30px
+                        </div>
+                    </div>
+
+                    <div class="ejemplo-espaciado">
+                        <h3>Ambos</h3>
+                        <div class="caja-ambos-demo">
+                            Tengo margin y padding
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCION: box-sizing                      -->
+            <!-- ======================================== -->
+            <section class="seccion">
+                <h2>box-sizing: content-box vs border-box</h2>
+
+                <p>
+                    Por defecto, <strong>width</strong> solo mide el contenido.
+                    El padding y border se suman al ancho total.
+                    Con <em>box-sizing: border-box</em>, el width incluye todo.
+                </p>
+
+                <div class="comparacion-boxsizing">
+                    <div class="caja-content-box">
+                        <strong>content-box</strong> (default)<br>
+                        width: 250px<br>
+                        + padding: 20px<br>
+                        + border: 5px<br>
+                        = 300px real
+                    </div>
+                    <div class="caja-border-box">
+                        <strong>border-box</strong><br>
+                        width: 250px<br>
+                        (padding y border incluidos)<br>
+                        = 250px real
+                    </div>
+                </div>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCION: Width y Height                  -->
+            <!-- ======================================== -->
+            <section class="seccion">
+                <h2>Ancho y Alto (width / height)</h2>
+
+                <p>Podemos controlar el tamaño de las cajas con distintas unidades:</p>
+
+                <div class="galeria-tamanios">
+                    <div class="caja tamanio-px">width: 200px</div>
+                    <div class="caja tamanio-porcentaje">width: 50%</div>
+                    <div class="caja tamanio-auto">width: auto (default)</div>
+                    <div class="caja tamanio-max">max-width: 400px</div>
+                </div>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCION: Display block vs inline         -->
+            <!-- ======================================== -->
+            <section class="seccion">
+                <h2>Display: block vs inline vs inline-block</h2>
+
+                <p>La propiedad <strong>display</strong> controla como se comporta una caja:</p>
+
+                <h3>block (ocupa toda la linea)</h3>
+                <div class="demo-display">
+                    <div class="caja-block">Bloque 1</div>
+                    <div class="caja-block">Bloque 2</div>
+                    <div class="caja-block">Bloque 3</div>
+                </div>
+
+                <h3>inline (solo ocupa lo que necesita, NO acepta width/height)</h3>
+                <div class="demo-display">
+                    <span class="caja-inline">Inline 1</span>
+                    <span class="caja-inline">Inline 2</span>
+                    <span class="caja-inline">Inline 3</span>
+                </div>
+
+                <h3>inline-block (en linea, PERO acepta width/height)</h3>
+                <div class="demo-display">
+                    <div class="caja-inline-block">Inline-block 1</div>
+                    <div class="caja-inline-block">Inline-block 2</div>
+                    <div class="caja-inline-block">Inline-block 3</div>
+                </div>
+            </section>
+
+            <!-- ======================================== -->
+            <!-- SECCION: Overflow                        -->
+            <!-- ======================================== -->
+            <section class="seccion">
+                <h2>Overflow (contenido desbordado)</h2>
+
+                <p>Cuando el contenido es mas grande que la caja, <strong>overflow</strong> controla que pasa:</p>
+
+                <div class="galeria-overflow">
+                    <div class="caja-overflow overflow-visible">
+                        <h3>visible (default)</h3>
+                        <p>Este texto es muy largo y se desborda de la caja. El contenido se ve fuera de los limites del contenedor sin recortarse.</p>
+                    </div>
+                    <div class="caja-overflow overflow-hidden">
+                        <h3>hidden</h3>
+                        <p>Este texto es muy largo y se desborda de la caja. El contenido que no cabe se oculta y no se puede ver.</p>
+                    </div>
+                    <div class="caja-overflow overflow-scroll">
+                        <h3>scroll</h3>
+                        <p>Este texto es muy largo y se desborda de la caja. Aparece una barra de scroll para poder ver todo el contenido.</p>
+                    </div>
+                    <div class="caja-overflow overflow-auto">
+                        <h3>auto</h3>
+                        <p>Este texto es muy largo y se desborda de la caja. Solo muestra scroll si realmente se necesita.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- FOOTER                                       -->
+    <!-- ============================================ -->
+    <footer id="pie-pagina">
+        <div class="contenedor">
+            <p>© 2026 - Mi Primera Pagina Web. Todos los derechos reservados.</p>
+            <p>
+                Sigueme en
+                <a href="https://github.com" target="_blank">GitHub</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- JAVASCRIPT: Hace interactivo el Box Model   -->
+    <!-- ============================================ -->
+    <script>
+        /*
+            Este script escucha los cambios en los inputs
+            y actualiza la caja de preview en tiempo real.
+        */
+
+        // Obtenemos referencias a todos los inputs
+        // document.getElementById busca un elemento por su ID
+        const inputs = {
+            marginTop:     document.getElementById('margin-top'),
+            marginRight:   document.getElementById('margin-right'),
+            marginBottom:  document.getElementById('margin-bottom'),
+            marginLeft:    document.getElementById('margin-left'),
+            borderWidth:   document.getElementById('border-width'),
+            borderStyle:   document.getElementById('border-style'),
+            borderColor:   document.getElementById('border-color'),
+            borderRadius:  document.getElementById('border-radius'),
+            paddingTop:    document.getElementById('padding-top'),
+            paddingRight:  document.getElementById('padding-right'),
+            paddingBottom: document.getElementById('padding-bottom'),
+            paddingLeft:   document.getElementById('padding-left'),
+            contentWidth:  document.getElementById('content-width'),
+            contentHeight: document.getElementById('content-height'),
+            contentBg:     document.getElementById('content-bg'),
+            contentText:   document.getElementById('content-text')
+        };
+
+        // Obtenemos referencias a los elementos de preview
+        const preview = {
+            margin:     document.getElementById('preview-margin'),
+            border:     document.getElementById('preview-border'),
+            padding:    document.getElementById('preview-padding'),
+            contenido:  document.getElementById('preview-contenido'),
+            texto:      document.getElementById('preview-texto')
+        };
+
+        // Obtenemos referencias a las etiquetas de valor
+        const vals = {
+            marginTop:    document.getElementById('val-margin-top'),
+            marginRight:  document.getElementById('val-margin-right'),
+            marginBottom: document.getElementById('val-margin-bottom'),
+            marginLeft:   document.getElementById('val-margin-left'),
+            border:       document.getElementById('val-border'),
+            paddingTop:   document.getElementById('val-padding-top'),
+            paddingRight: document.getElementById('val-padding-right'),
+            paddingBottom:document.getElementById('val-padding-bottom'),
+            paddingLeft:  document.getElementById('val-padding-left'),
+            dimensiones:  document.getElementById('val-dimensiones')
+        };
+
+        // Obtenemos referencias a los textos de CSS generado
+        const css = {
+            margin:  document.getElementById('css-margin'),
+            border:  document.getElementById('css-border'),
+            padding: document.getElementById('css-padding'),
+            content: document.getElementById('css-content')
+        };
+
+        // Esta funcion se ejecuta cada vez que un input cambia
+        function actualizarPreview() {
+            // Leemos los valores actuales de cada input
+            var mt = parseInt(inputs.marginTop.value) || 0;
+            var mr = parseInt(inputs.marginRight.value) || 0;
+            var mb = parseInt(inputs.marginBottom.value) || 0;
+            var ml = parseInt(inputs.marginLeft.value) || 0;
+
+            var bw = parseInt(inputs.borderWidth.value) || 0;
+            var bs = inputs.borderStyle.value;
+            var bc = inputs.borderColor.value;
+            var br = parseInt(inputs.borderRadius.value) || 0;
+
+            var pt = parseInt(inputs.paddingTop.value) || 0;
+            var pr = parseInt(inputs.paddingRight.value) || 0;
+            var pb = parseInt(inputs.paddingBottom.value) || 0;
+            var pl = parseInt(inputs.paddingLeft.value) || 0;
+
+            var cw = parseInt(inputs.contentWidth.value) || 100;
+            var ch = parseInt(inputs.contentHeight.value) || 50;
+            var cbg = inputs.contentBg.value;
+            var ctxt = inputs.contentText.value;
+
+            // 1) Actualizamos los estilos de la capa MARGIN
+            preview.margin.style.padding = mt + 'px ' + mr + 'px ' + mb + 'px ' + ml + 'px';
+
+            // 2) Actualizamos los estilos de la capa BORDER
+            preview.border.style.border = bw + 'px ' + bs + ' ' + bc;
+            preview.border.style.borderRadius = br + 'px';
+
+            // 3) Actualizamos los estilos de la capa PADDING
+            preview.padding.style.padding = pt + 'px ' + pr + 'px ' + pb + 'px ' + pl + 'px';
+
+            // 4) Actualizamos el CONTENIDO
+            preview.contenido.style.width = cw + 'px';
+            preview.contenido.style.height = ch + 'px';
+            preview.contenido.style.backgroundColor = cbg;
+            preview.texto.textContent = ctxt;
+
+            // 5) Actualizamos las etiquetas de valor en el diagrama
+            vals.marginTop.textContent = mt;
+            vals.marginRight.textContent = mr;
+            vals.marginBottom.textContent = mb;
+            vals.marginLeft.textContent = ml;
+            vals.border.textContent = bw + 'px';
+            vals.paddingTop.textContent = pt;
+            vals.paddingRight.textContent = pr;
+            vals.paddingBottom.textContent = pb;
+            vals.paddingLeft.textContent = pl;
+            vals.dimensiones.textContent = cw + ' x ' + ch;
+
+            // 6) Actualizamos el CSS generado (shorthand)
+            css.margin.textContent = 'margin: ' + mt + 'px ' + mr + 'px ' + mb + 'px ' + ml + 'px;';
+            css.border.textContent = 'border: ' + bw + 'px ' + bs + ' ' + bc + '; border-radius: ' + br + 'px;';
+            css.padding.textContent = 'padding: ' + pt + 'px ' + pr + 'px ' + pb + 'px ' + pl + 'px;';
+            css.content.textContent = 'width: ' + cw + 'px; height: ' + ch + 'px;';
+
+            // 7) Actualizamos la formula del tamaño total
+            var totalAncho = ml + bw + pl + cw + pr + bw + mr;
+            var totalAlto = mt + bw + pt + ch + pb + bw + mb;
+
+            document.getElementById('formula').innerHTML =
+                '<span class="formula-parte formula-margin">margin-left(' + ml + ')</span> + ' +
+                '<span class="formula-parte formula-border">border(' + bw + ')</span> + ' +
+                '<span class="formula-parte formula-padding">padding-left(' + pl + ')</span> + ' +
+                '<span class="formula-parte formula-contenido">width(' + cw + ')</span> + ' +
+                '<span class="formula-parte formula-padding">padding-right(' + pr + ')</span> + ' +
+                '<span class="formula-parte formula-border">border(' + bw + ')</span> + ' +
+                '<span class="formula-parte formula-margin">margin-right(' + mr + ')</span>' +
+                ' = <strong>' + totalAncho + 'px ancho</strong>' +
+                '<br><br>' +
+                '<span class="formula-parte formula-margin">margin-top(' + mt + ')</span> + ' +
+                '<span class="formula-parte formula-border">border(' + bw + ')</span> + ' +
+                '<span class="formula-parte formula-padding">padding-top(' + pt + ')</span> + ' +
+                '<span class="formula-parte formula-contenido">height(' + ch + ')</span> + ' +
+                '<span class="formula-parte formula-padding">padding-bottom(' + pb + ')</span> + ' +
+                '<span class="formula-parte formula-border">border(' + bw + ')</span> + ' +
+                '<span class="formula-parte formula-margin">margin-bottom(' + mb + ')</span>' +
+                ' = <strong>' + totalAlto + 'px alto</strong>';
+        }
+
+        // Agregamos el evento "input" a TODOS los controles
+        // Asi cada vez que el usuario cambie un valor, se actualiza la preview
+        var todosLosInputs = document.querySelectorAll('.controles-box-model input, .controles-box-model select');
+        for (var i = 0; i < todosLosInputs.length; i++) {
+            todosLosInputs[i].addEventListener('input', actualizarPreview);
+        }
+
+        // Ejecutamos una vez al cargar para que la preview se vea correcta
+        actualizarPreview();
+    </script>
+
+</body>
+</html>

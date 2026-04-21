@@ -1,0 +1,240 @@
+/* ============================================
+   HOJA DE ESTILOS - SELECTORES DE ELEMENTO
+   ============================================
+
+   En este archivo SOLO usamos selectores de elemento.
+   Un selector de elemento selecciona TODAS las etiquetas
+   de ese tipo en la pagina.
+
+   Sintaxis:  elemento { propiedad: valor; }
+   Ejemplo:   h1 { color: blue; }
+
+   Esto aplica el estilo a TODOS los <h1> de la pagina.
+   ============================================ */
+
+
+/* --- ESTILOS GENERALES DEL CUERPO --- */
+
+body {
+    /* Selecciona el <body>, afecta a toda la pagina */
+    font-family: Arial, Helvetica, sans-serif; /* Tipo de letra */
+    margin: 0;                     /* Quita el margen por defecto del navegador */
+    padding: 0;                    /* Quita el relleno por defecto */
+    line-height: 1.6;              /* Espacio entre lineas de texto */
+    color: #333;                   /* Color del texto (gris oscuro) */
+    background-color: #f5f5f5;     /* Color de fondo (gris muy claro) */
+}
+
+
+/* --- ENCABEZADOS --- */
+
+h1 {
+    /* Selecciona TODOS los <h1> */
+    font-size: 2.5em;              /* Tamaño de letra (2.5 veces el tamaño base) */
+    color: #2c3e50;                /* Color azul oscuro */
+    margin-bottom: 10px;           /* Espacio debajo del titulo */
+}
+
+h2 {
+    /* Selecciona TODOS los <h2> */
+    font-size: 1.8em;
+    color: #34495e;                /* Azul grisaceo */
+    border-bottom: 2px solid #3498db;  /* Linea azul debajo del subtitulo */
+    padding-bottom: 5px;           /* Espacio entre el texto y la linea */
+}
+
+h3 {
+    /* Selecciona TODOS los <h3> */
+    font-size: 1.3em;
+    color: #2c3e50;
+}
+
+
+/* --- TEXTO --- */
+
+p {
+    /* Selecciona TODOS los <p> (parrafos) */
+    font-size: 1em;                /* Tamaño base de fuente */
+    margin-bottom: 15px;           /* Espacio debajo de cada parrafo */
+}
+
+strong {
+    /* Selecciona TODOS los <strong> */
+    color: #e74c3c;                /* Rojo para resaltar el texto importante */
+}
+
+em {
+    /* Selecciona TODOS los <em> */
+    color: #8e44ad;                /* Morado para el texto enfatizado */
+}
+
+span {
+    /* Selecciona TODOS los <span> */
+    background-color: #ffffcc;     /* Fondo amarillo claro, como un resaltador */
+    padding: 2px 5px;              /* Pequeño relleno alrededor */
+}
+
+
+/* --- ENLACES --- */
+
+a {
+    /* Selecciona TODOS los <a> (enlaces) */
+    color: #3498db;                /* Color azul */
+    text-decoration: none;         /* Quita el subrayado por defecto */
+}
+
+
+/* --- IMAGENES --- */
+
+img {
+    /* Selecciona TODAS las <img> */
+    max-width: 100%;               /* La imagen nunca sera mas ancha que su contenedor */
+    height: auto;                  /* Mantiene la proporcion de la imagen */
+    border-radius: 8px;            /* Esquinas redondeadas */
+    margin: 15px 0;                /* Espacio arriba y abajo */
+}
+
+
+/* --- NAVEGACION --- */
+
+header {
+    /* Selecciona el <header> */
+    background-color: #2c3e50;     /* Fondo oscuro */
+    padding: 15px 30px;            /* Relleno interno (arriba/abajo, izquierda/derecha) */
+}
+
+nav {
+    /* Selecciona el <nav> */
+    text-align: center;            /* Centra los enlaces */
+}
+
+
+/* --- CONTENIDO PRINCIPAL --- */
+
+main {
+    /* Selecciona el <main> */
+    max-width: 800px;              /* Ancho maximo del contenido */
+    margin: 20px auto;             /* Centra horizontalmente con margen arriba/abajo */
+    padding: 0 20px;               /* Relleno a los lados */
+}
+
+section {
+    /* Selecciona TODAS las <section> */
+    background-color: white;       /* Fondo blanco para cada seccion */
+    padding: 25px;                 /* Relleno interno */
+    margin-bottom: 20px;           /* Espacio entre secciones */
+    border-radius: 8px;            /* Esquinas redondeadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    /*
+        box-shadow: horizontal vertical difuminado color
+        rgba = color con transparencia (el 0.1 es 10% de opacidad)
+    */
+}
+
+
+/* --- LISTAS --- */
+
+ul {
+    /* Selecciona TODAS las <ul> (listas con puntos) */
+    list-style-type: square;       /* Cambia los puntos por cuadrados */
+    padding-left: 25px;            /* Espacio a la izquierda */
+}
+
+ol {
+    /* Selecciona TODAS las <ol> (listas numeradas) */
+    padding-left: 25px;
+}
+
+li {
+    /* Selecciona TODOS los <li> (elementos de lista) */
+    margin-bottom: 8px;            /* Espacio entre cada elemento */
+    padding: 5px 0;                /* Relleno arriba y abajo */
+}
+
+
+/* --- TABLA --- */
+
+table {
+    /* Selecciona TODAS las <table> */
+    width: 100%;                   /* Ocupa todo el ancho disponible */
+    border-collapse: collapse;     /* Junta los bordes de las celdas (sin espacios) */
+    margin: 15px 0;                /* Espacio arriba y abajo */
+}
+
+th {
+    /* Selecciona TODAS las <th> (celdas de encabezado) */
+    background-color: #3498db;     /* Fondo azul */
+    color: white;                  /* Texto blanco */
+    padding: 12px;                 /* Relleno interno */
+    text-align: left;              /* Texto alineado a la izquierda */
+}
+
+td {
+    /* Selecciona TODAS las <td> (celdas de datos) */
+    padding: 10px 12px;            /* Relleno interno */
+    border-bottom: 1px solid #ddd; /* Linea gris clara debajo de cada celda */
+}
+
+tr {
+    /* Selecciona TODAS las <tr> (filas de tabla) */
+    background-color: #fff;        /* Fondo blanco */
+}
+
+
+/* --- FORMULARIO --- */
+
+label {
+    /* Selecciona TODOS los <label> */
+    display: block;                /* Hace que cada label ocupe su propia linea */
+    margin-top: 15px;              /* Espacio arriba */
+    font-weight: bold;             /* Texto en negritas */
+    color: #2c3e50;
+}
+
+input {
+    /* Selecciona TODOS los <input> */
+    width: 100%;                   /* Ocupa todo el ancho */
+    padding: 10px;                 /* Relleno interno */
+    border: 2px solid #ddd;        /* Borde gris claro */
+    border-radius: 5px;            /* Esquinas redondeadas */
+    font-size: 1em;                /* Tamaño de fuente */
+    box-sizing: border-box;        /* El padding no aumenta el ancho total */
+}
+
+textarea {
+    /* Selecciona TODOS los <textarea> */
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    min-height: 100px;             /* Altura minima */
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    resize: vertical;              /* Solo permite redimensionar verticalmente */
+}
+
+button {
+    /* Selecciona TODOS los <button> */
+    display: block;                /* Ocupa su propia linea */
+    margin-top: 15px;
+    padding: 12px 30px;            /* Relleno interno (vertical, horizontal) */
+    background-color: #3498db;     /* Fondo azul */
+    color: white;                  /* Texto blanco */
+    border: none;                  /* Sin borde */
+    border-radius: 5px;            /* Esquinas redondeadas */
+    font-size: 1.1em;              /* Tamaño de fuente ligeramente grande */
+    cursor: pointer;               /* Cambia el cursor a manito al pasar encima */
+}
+
+
+/* --- PIE DE PAGINA --- */
+
+footer {
+    /* Selecciona el <footer> */
+    background-color: #2c3e50;     /* Fondo oscuro */
+    color: white;                  /* Texto blanco */
+    text-align: center;            /* Texto centrado */
+    padding: 20px;                 /* Relleno interno */
+    margin-top: 30px;              /* Espacio arriba */
+}

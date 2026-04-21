@@ -1,0 +1,52 @@
+/* ========================================
+   FLEXBOX
+   Flexbox es un sistema de layout en UNA dimension
+   (trabaja en fila O en columna, no ambas a la vez).
+   Ideal para: navbars, centrar cosas, distribuir elementos.
+   ======================================== */
+
+/*
+   .flex-container — Contenedor flex basico
+   Agrupa hijos en una sola direccion.
+   Por defecto aqui usamos columna (mobile first),
+   y en el media query de tablet cambiamos a fila.
+*/
+.flex-container {
+    display: flex;                /* Activa flexbox en este contenedor */
+    flex-direction: column;       /* Los hijos se apilan verticalmente (uno debajo de otro) */
+    gap: 10px;                    /* Espacio de 10px entre cada hijo */
+}
+
+/*
+   .flex-centrado — Centrado perfecto con flexbox
+   El truco clasico: justify-content + align-items = center
+   centra el contenido tanto horizontal como verticalmente.
+*/
+.flex-centrado {
+    display: flex;
+    justify-content: center;      /* Centra en el eje principal (horizontal si es fila) */
+    align-items: center;          /* Centra en el eje cruzado (vertical si es fila) */
+    height: 150px;                /* Necesitamos una altura fija para que el centrado vertical se note */
+    background: #ddd;
+    border-radius: 4px;
+}
+
+/*
+   .flex-between — Distribucion con espacio entre elementos
+   space-between pone el primer hijo al inicio, el ultimo al final,
+   y reparte el espacio sobrante entre los demas.
+*/
+.flex-between {
+    display: flex;
+    justify-content: space-between;  /* Distribuye los hijos con espacio igual ENTRE ellos */
+    gap: 10px;                       /* Espacio minimo entre cajas */
+}
+
+/*
+   .flex-between .caja — Cada caja dentro del contenedor between
+   flex: 1 hace que todas las cajas crezcan por igual
+   y ocupen el mismo ancho (se reparten el espacio disponible).
+*/
+.flex-between .caja {
+    flex: 1;    /* Shorthand de: flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
+}

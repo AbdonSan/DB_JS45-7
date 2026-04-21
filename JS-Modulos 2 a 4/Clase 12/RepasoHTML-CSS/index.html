@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - María López (CSS Puro)</title>
+  <!-- Hoja de estilos EXTERNA -->
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+
+  <!-- HEADER con FLEXBOX: foto + datos -->
+  <header class="header">
+    <img id="foto" src="img/foto.svg" alt="Foto de María López">
+    <div class="header-info">
+      <h1>María López García</h1>
+      <p>Desarrolladora Web Frontend</p>
+      <p>Madrid, España</p>
+    </div>
+  </header>
+
+  <!-- NAV con FLEXBOX -->
+  <nav class="nav">
+    <a href="index.html">CSS Puro</a>
+    <a href="bootstrap.html">Versión Bootstrap</a>
+    <a href="bootstrap.html">Versión Bootstrap 2</a>
+  </nav>
+
+  <!-- CONTENIDO con CSS GRID: 2 columnas (sidebar + main) -->
+  <div class="contenido">
+
+    <!-- SIDEBAR (columna izquierda) -->
+    <aside class="sidebar">
+
+      <div class="seccion">
+        <h2>Contacto</h2>
+        <ul class="contacto-lista">
+          <li><span>Email:</span> maria@email.com</li>
+          <li><span>Tel:</span> +34 612 345 678</li>
+          <li><span>LinkedIn:</span> /in/marialopez</li>
+          <li><span>GitHub:</span> /marialopez</li>
+        </ul>
+      </div>
+
+      <div class="seccion">
+        <h2>Habilidades</h2>
+        <div class="habilidad">
+          <div class="habilidad-nombre">HTML / CSS</div>
+          <div class="barra"><div class="barra-relleno" style="width: 90%"></div></div>
+        </div>
+        <div class="habilidad">
+          <div class="habilidad-nombre">JavaScript</div>
+          <div class="barra"><div class="barra-relleno" style="width: 75%"></div></div>
+        </div>
+        <div class="habilidad">
+          <div class="habilidad-nombre">React</div>
+          <div class="barra"><div class="barra-relleno" style="width: 60%"></div></div>
+        </div>
+        <div class="habilidad">
+          <div class="habilidad-nombre">Git</div>
+          <div class="barra"><div class="barra-relleno" style="width: 70%"></div></div>
+        </div>
+      </div>
+
+      <div class="seccion">
+        <h2>Idiomas</h2>
+        <div class="idiomas-grid">
+          <span>Español:</span><span>Nativo</span>
+          <span>Inglés:</span><span>B2</span>
+          <span>Francés:</span><span>A2</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN (columna derecha) -->
+    <main class="main">
+
+      <div class="seccion">
+        <h2>Perfil</h2>
+        <p>Desarrolladora frontend con 3 años de experiencia creando sitios web responsivos. Me apasiona el diseño limpio y la accesibilidad web.</p>
+      </div>
+
+      <div class="seccion">
+        <h2>Experiencia</h2>
+        <div class="item">
+          <h3>Desarrolladora Frontend - TechSolutions S.L.</h3>
+          <div class="fecha">Enero 2024 - Presente</div>
+          <p>Desarrollo de interfaces web con HTML, CSS y JavaScript. Maquetación responsiva con Flexbox y Grid.</p>
+        </div>
+        <div class="item">
+          <h3>Becaria Web - Agencia Creativa</h3>
+          <div class="fecha">Junio 2023 - Diciembre 2023</div>
+          <p>Soporte en maquetación de landing pages y mantenimiento de sitios WordPress.</p>
+        </div>
+      </div>
+
+      <div class="seccion">
+        <h2>Educación</h2>
+        <div class="item">
+          <h3>Grado en Ingeniería Informática</h3>
+          <div class="fecha">Universidad Complutense de Madrid · 2019 - 2023</div>
+        </div>
+        <div class="item">
+          <h3>Curso Frontend Avanzado</h3>
+          <div class="fecha">Platzi · 2023</div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <footer class="footer">
+    <p>CV creado con CSS puro — Flexbox, Grid y Media Queries</p>
+  </footer>
+  <script>
+  document.getElementById("foto").style.display="none";
+  </script>
+
+</body>
+</html>

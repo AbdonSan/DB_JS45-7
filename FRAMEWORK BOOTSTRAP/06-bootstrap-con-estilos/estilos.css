@@ -1,0 +1,129 @@
+/*
+    estilos.css - Nuestros estilos personalizados
+    ==============================================
+    Este archivo se carga DESPUES de Bootstrap,
+    asi que nuestras reglas tienen prioridad
+    sobre las de Bootstrap (por la cascada CSS).
+
+    Aqui definimos:
+    - Colores propios (variables CSS)
+    - Estilos para el navbar, hero, tarjetas, etc.
+*/
+
+/* ============================================ */
+/* VARIABLES: Nuestros colores personalizados   */
+/* Cambia estos valores para cambiar TODO       */
+/* el tema de la pagina de un solo lugar        */
+/* ============================================ */
+:root {
+    --color-principal: #5C3D2E;    /* Cafe oscuro */
+    --color-secundario: #B85C38;   /* Cafe rojizo */
+    --color-claro: #F5E6CC;        /* Crema */
+    --color-texto: #2D2424;        /* Casi negro */
+}
+
+/* ============================================ */
+/* NAVBAR: Sobreescribimos el navbar de Bootstrap*/
+/* ============================================ */
+.mi-navbar {
+    background-color: var(--color-principal);
+}
+
+.mi-navbar .navbar-brand,
+.mi-navbar .nav-link {
+    color: var(--color-claro);
+}
+
+.mi-navbar .nav-link:hover {
+    color: white;
+}
+
+/* ============================================ */
+/* HERO: Nuestra seccion principal              */
+/* Bootstrap NO tiene una clase "hero",         */
+/* asi que la creamos desde cero                */
+/* ============================================ */
+.hero-section {
+    background-color: var(--color-claro);
+    padding: 80px 0;
+    color: var(--color-texto);
+}
+
+/* ============================================ */
+/* BOTON PERSONALIZADO                          */
+/* Bootstrap tiene btn-primary, btn-success...  */
+/* Nosotros creamos btn-custom con NUESTRO color*/
+/* ============================================ */
+.btn-custom {
+    background-color: var(--color-secundario);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 30px;
+}
+
+.btn-custom:hover {
+    background-color: var(--color-principal);
+    color: white;
+}
+
+/* ============================================ */
+/* TARJETAS DEL MENU                            */
+/* Sobreescribimos el .card de Bootstrap        */
+/* para darle nuestro propio estilo             */
+/* ============================================ */
+.menu-card {
+    border: 2px solid var(--color-claro);
+    border-radius: 15px;
+    transition: transform 0.2s;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.menu-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+/* ============================================ */
+/* PRECIO: Estilo propio para mostrar precios   */
+/* ============================================ */
+.precio {
+    display: inline-block;
+    background-color: var(--color-secundario);
+    color: white;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* ============================================ */
+/* TITULOS DE SECCION                           */
+/* ============================================ */
+.section-title {
+    color: var(--color-principal);
+    font-weight: bold;
+}
+
+/* ============================================ */
+/* FOOTER PERSONALIZADO                         */
+/* ============================================ */
+.mi-footer {
+    background-color: var(--color-principal);
+    color: var(--color-claro);
+}
+
+/* ============================================ -->
+/* FORMULARIO: Personalizamos el focus          */
+/* Cuando haces clic en un input, el borde      */
+/* cambia a NUESTRO color en vez del azul       */
+/* de Bootstrap                                 */
+/* ============================================ */
+.form-control:focus {
+    border-color: var(--color-secundario);
+    box-shadow: 0 0 0 0.2rem rgba(184, 92, 56, 0.25);
+}

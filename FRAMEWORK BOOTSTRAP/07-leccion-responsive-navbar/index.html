@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+    EJERCICIO: Flexbox, Grid y Media Queries
+    =========================================
+    Ejercicio demostrativo y sencillo para ensenar
+    los 3 conceptos fundamentales del diseno responsivo.
+
+    Redimensiona la ventana para ver los cambios!
+-->
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio: Flexbox, Grid y Media Queries</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="flexbox.css">
+    <link rel="stylesheet" href="grid.css">
+    <link rel="stylesheet" href="media-queries.css">
+</head>
+
+<body>
+
+    <h1>Flexbox, Grid y Media Queries</h1>
+    <p class="instruccion">Redimensiona la ventana del navegador para ver como cambia el layout.</p>
+
+    <!-- =============================== -->
+    <!-- SECCION 1: FLEXBOX              -->
+    <!-- =============================== -->
+    <section>
+        <h2>1. Flexbox</h2>
+        <p>Los elementos se acomodan en fila o columna segun el tamano de pantalla.</p>
+
+        <!-- Ejemplo Flexbox: fila en desktop, columna en movil -->
+        <div class="flex-container">
+            <div class="caja caja-1">Caja 1</div>
+            <div class="caja caja-2">Caja 2</div>
+            <div class="caja caja-3">Caja 3</div>
+        </div>
+
+        <!-- Ejemplo Flexbox: centrado -->
+        <h3>Centrado con Flexbox</h3>
+        <div class="flex-centrado">
+            <div class="caja caja-4">Estoy centrado</div>
+        </div>
+
+        <!-- Ejemplo Flexbox: space-between -->
+        <h3>Distribucion con space-between</h3>
+        <div class="flex-between">
+            <div class="caja caja-1">Inicio</div>
+            <div class="caja caja-2">Centro</div>
+            <div class="caja caja-3">Final</div>
+        </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- SECCION 2: CSS GRID             -->
+    <!-- =============================== -->
+    <section>
+        <h2>2. CSS Grid</h2>
+        <p>Grid permite crear layouts de filas Y columnas al mismo tiempo.</p>
+
+        <!-- Ejemplo Grid: layout de pagina -->
+        <div class="grid-layout">
+            <div class="caja header">Header</div>
+            <div class="caja sidebar">Sidebar</div>
+            <div class="caja contenido">Contenido principal</div>
+            <div class="caja footer">Footer</div>
+        </div>
+
+        <!-- Ejemplo Grid: galeria -->
+        <h3>Galeria con Grid</h3>
+        <div class="grid-galeria">
+            <div class="caja caja-1">1</div>
+            <div class="caja caja-2">2</div>
+            <div class="caja caja-3">3</div>
+            <div class="caja caja-4">4</div>
+            <div class="caja caja-1">5</div>
+            <div class="caja caja-2">6</div>
+        </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- SECCION 3: MEDIA QUERIES        -->
+    <!-- =============================== -->
+    <section>
+        <h2>3. Media Queries</h2>
+        <p>Los colores y el layout cambian segun el ancho de la pantalla (Mobile First).</p>
+
+        <!-- Indicador de breakpoint actual -->
+        <div class="indicador-breakpoint">
+            Cambia el tamano de la ventana para ver este texto cambiar
+        </div>
+
+        <!-- Tarjetas responsivas: 1 col movil, 2 col tablet, 3 col desktop -->
+        <div class="tarjetas-responsivas">
+            <div class="tarjeta">
+                <h3>Tarjeta A</h3>
+                <p>1 columna en movil</p>
+            </div>
+            <div class="tarjeta">
+                <h3>Tarjeta B</h3>
+                <p>2 columnas en tablet</p>
+            </div>
+            <div class="tarjeta">
+                <h3>Tarjeta C</h3>
+                <p>3 columnas en desktop</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

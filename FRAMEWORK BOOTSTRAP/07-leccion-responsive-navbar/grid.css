@@ -1,0 +1,35 @@
+/* ========================================
+   CSS GRID
+   Grid es un sistema de layout en DOS dimensiones
+   (trabaja en filas Y columnas al mismo tiempo).
+   Ideal para: layouts de pagina, galerias, dashboards.
+   ======================================== */
+
+/*
+   .grid-layout — Layout de pagina clasico (header, sidebar, contenido, footer)
+   Empezamos con 1 columna (mobile first) y en tablet
+   cambiamos a 2 columnas con el media query.
+*/
+.grid-layout {
+    display: grid;                    /* Activa CSS Grid en este contenedor */
+    grid-template-columns: 1fr;       /* 1fr = una fraccion = una sola columna que ocupa todo el ancho */
+    gap: 10px;                        /* Espacio de 10px entre las celdas del grid */
+}
+
+/* Colores para cada seccion del layout */
+.header   { background: #2c3e50; }
+.sidebar  { background: #e67e22; }
+.contenido { background: #1abc9c; min-height: 100px; }  /* min-height para que se vea aunque no tenga contenido */
+.footer   { background: #2c3e50; }
+
+/*
+   .grid-galeria — Grid para mostrar items tipo galeria
+   Empezamos con 2 columnas en movil.
+   "1fr 1fr" significa: 2 columnas del mismo ancho.
+   Es lo mismo que escribir repeat(2, 1fr).
+*/
+.grid-galeria {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* 2 columnas iguales, cada una ocupa la mitad del espacio */
+    gap: 10px;
+}
