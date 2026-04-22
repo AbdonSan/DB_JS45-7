@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Funciones Callback – Lección 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 750px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background-color: #f5f5f5;
+        }
+        h1 { color: #2c3e50; }
+
+        .ejercicio {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-top: 28px;
+        }
+        .ejercicio h2 {
+            margin-top: 0;
+            color: #2980b9;
+            font-size: 1.05em;
+        }
+        .ejercicio p.desc {
+            color: #555;
+            font-size: 0.9em;
+            margin-bottom: 14px;
+        }
+
+        /* Inputs y botones */
+        label { font-size: 0.95em; }
+        input[type="number"] {
+            border: 1px solid #aaa;
+            padding: 5px 8px;
+            font-size: 0.95em;
+            width: 100px;
+            margin-left: 6px;
+        }
+        button {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 7px 20px;
+            font-size: 0.95em;
+            cursor: pointer;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            background-color: #2980b9;
+            color: white;
+        }
+        button:hover { background-color: #2471a3; }
+
+        /* Área de salida */
+        .salida {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            min-height: 30px;
+            display: none;          /* oculto hasta que haya resultado */
+        }
+        .salida.ok {
+            background-color: #eafaf1;
+            border-left: 4px solid #2ecc71;
+            color: #1a7a4a;
+        }
+        .salida.error {
+            background-color: #fdedec;
+            border-left: 4px solid #e74c3c;
+            color: #922b21;
+        }
+        .salida.info {
+            background-color: #eaf4fb;
+            border-left: 4px solid #3498db;
+            color: #1a5276;
+        }
+        .salida.espera {
+            background-color: #fef9e7;
+            border-left: 4px solid #f39c12;
+            color: #7d6608;
+        }
+
+        /* Lista de sumatorias sucesivas */
+        .lista-sumas {
+            font-family: monospace;
+            font-size: 0.9em;
+            line-height: 1.8;
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Funciones Callback en JavaScript</h1>
+    <p>Tres ejercicios que demuestran cómo pasar funciones como argumentos (callbacks) para manejar resultados, errores y asincronía.</p>
+
+    <!-- ================================================== -->
+    <!-- EJERCICIO 1: validar_numero                         -->
+    <!-- ================================================== -->
+    <div class="ejercicio">
+        <h2>Ejercicio 1 – <code>validar_numero(callback)</code></h2>
+        <p class="desc">Solicita un número al usuario con <code>prompt()</code> y llama al callback con un mensaje de éxito o error según si el dato es válido.</p>
+        <button onclick="ejecutarValidar()">Solicitar número</button>
+        <div id="salida-validar" class="salida"></div>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- EJERCICIO 2: calcular_y_avisar_despues              -->
+    <!-- ================================================== -->
+    <div class="ejercicio">
+        <h2>Ejercicio 2 – <code>calcular_y_avisar_despues(numero, callback)</code></h2>
+        <p class="desc">Calcula la sumatoria de impares entre 1 y el número ingresado. Espera 5 segundos y luego muestra el resultado.</p>
+        <div>
+            <label>Número: <input type="number" id="num-despues" value="10" min="1"></label>
+        </div>
+        <button onclick="ejecutarDespues()">Calcular (resultado en 5 s)</button>
+        <div id="salida-despues" class="salida espera"></div>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- EJERCICIO 3: calcular_y_avisar_dependiendo          -->
+    <!-- ================================================== -->
+    <div class="ejercicio">
+        <h2>Ejercicio 3 – <code>calcular_y_avisar_dependiendo(numero, callback, callback_error)</code></h2>
+        <p class="desc">Calcula las sumatorias sucesivas de 1 hasta N. Si el total es menor a 1000 llama al callback de éxito; si es 1000 o más, llama al callback de error.</p>
+        <div>
+            <label>Número: <input type="number" id="num-depend" value="5" min="1"></label>
+        </div>
+        <button onclick="ejecutarDependiendo()">Calcular sumatorias</button>
+        <div id="lista-sumatorias" class="lista-sumas" style="display:none;"></div>
+        <div id="salida-depend" class="salida"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

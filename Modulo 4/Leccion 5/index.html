@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Rick & Morty API – Lección 5</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #0b0c10;
+            color: #c5c6c7;
+        }
+
+        h1 {
+            color: #66fcf1;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        h1 span { color: #45a29e; font-size: 0.6em; display: block; }
+
+        h2 {
+            color: #66fcf1;
+            border-bottom: 1px solid #45a29e;
+            padding-bottom: 6px;
+            margin-top: 36px;
+        }
+
+        /* Barra de botones */
+        .controles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 24px 0 10px;
+        }
+        button {
+            padding: 10px 18px;
+            border: 1px solid #45a29e;
+            border-radius: 6px;
+            background-color: #1f2833;
+            color: #66fcf1;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover { background-color: #45a29e; color: #0b0c10; }
+        button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        /* Badge de caché */
+        #badge-cache {
+            display: none;
+            background-color: #45a29e;
+            color: #0b0c10;
+            font-size: 0.78em;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 12px;
+            align-self: center;
+        }
+
+        /* Estado de carga / error */
+        #estado {
+            font-style: italic;
+            color: #888;
+            min-height: 20px;
+            margin-bottom: 8px;
+        }
+
+        /* ── Lista de personajes ── */
+        #lista-personajes {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #lista-personajes li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            background-color: #1f2833;
+            transition: background 0.15s;
+            cursor: pointer;
+        }
+        #lista-personajes li:hover { background-color: #2a3544; }
+        #lista-personajes li img {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #45a29e;
+        }
+        .id-badge {
+            font-size: 0.75em;
+            background: #45a29e;
+            color: #0b0c10;
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-weight: bold;
+            min-width: 28px;
+            text-align: center;
+        }
+        .nombre { font-weight: bold; color: #c5c6c7; flex: 1; }
+        .especie {
+            font-size: 0.82em;
+            color: #888;
+            background: #0b0c10;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        /* ── Agrupación por especie ── */
+        #grupos-especie { margin: 0; padding: 0; }
+        .grupo-especie { margin-bottom: 18px; }
+        .grupo-especie h3 {
+            color: #66fcf1;
+            margin: 0 0 6px;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .grupo-especie ul {
+            list-style: none;
+            padding-left: 12px;
+            margin: 0;
+        }
+        .grupo-especie li {
+            padding: 3px 0;
+            font-size: 0.9em;
+            color: #c5c6c7;
+        }
+        .grupo-especie li span { color: #45a29e; font-size: 0.85em; }
+
+        /* ── Ficha individual ── */
+        #ficha-personaje {
+            display: none;
+            background: #1f2833;
+            border: 1px solid #45a29e;
+            border-radius: 10px;
+            padding: 20px;
+            display: none;
+            flex-direction: row;
+            gap: 24px;
+            align-items: flex-start;
+            margin-top: 10px;
+        }
+        #ficha-personaje img {
+            width: 140px;
+            height: 140px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 3px solid #66fcf1;
+        }
+        .ficha-datos p { margin: 7px 0; font-size: 0.95em; }
+        .ficha-datos .label { color: #45a29e; font-weight: bold; }
+
+        /* Selector de personaje para ficha */
+        #select-personaje {
+            background: #1f2833;
+            color: #c5c6c7;
+            border: 1px solid #45a29e;
+            padding: 7px 12px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rick & Morty API <span>Consumo de API REST – Lección 5</span></h1>
+
+    <!-- Controles principales -->
+    <div class="controles">
+        <button id="btn-cargar" onclick="cargarPersonajes()">Obtener personajes</button>
+        <button id="btn-grupos" onclick="mostrarGrupos()" disabled>Agrupar por especie</button>
+        <button id="btn-ficha"  onclick="mostrarFichaSeleccionada()" disabled>Ver ficha</button>
+        <select id="select-personaje" disabled></select>
+        <span id="badge-cache">Desde caché local</span>
+    </div>
+
+    <div id="estado">Presiona "Obtener personajes" para hacer la primera petición a la API.</div>
+
+    <!-- Sección 1: Lista -->
+    <h2>Lista de personajes</h2>
+    <ul id="lista-personajes"></ul>
+
+    <!-- Sección 2: Agrupación -->
+    <h2>Agrupación por especie</h2>
+    <div id="grupos-especie"></div>
+
+    <!-- Sección 3: Ficha individual -->
+    <h2>Ficha del personaje</h2>
+    <div id="ficha-personaje"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

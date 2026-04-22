@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Actividad DOM – Lección 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background-color: #f5f5f5;
+        }
+        h1 { color: #2c3e50; }
+
+        /* Sección / tarjeta de cada ejercicio */
+        .ejercicio {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-top: 28px;
+        }
+        .ejercicio h2 {
+            margin-top: 0;
+            color: #2980b9;
+            font-size: 1.1em;
+        }
+
+        /* Etiquetas e inputs */
+        label { font-size: 0.95em; }
+        input[type="text"],
+        input[type="number"] {
+            border: 1px solid #aaa;
+            padding: 4px 8px;
+            font-size: 0.95em;
+            margin-left: 6px;
+            width: 200px;
+        }
+        input[type="color"] {
+            margin-left: 6px;
+            cursor: pointer;
+            width: 50px;
+            height: 28px;
+            vertical-align: middle;
+            border: 1px solid #aaa;
+        }
+        .fila { margin: 8px 0; }
+
+        /* Botones */
+        button {
+            display: block;
+            margin-top: 12px;
+            padding: 6px 18px;
+            font-size: 0.95em;
+            cursor: pointer;
+            background-color: #ddd;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+        }
+        button:hover { background-color: #ccc; }
+
+        /* Área de salida de cada ejercicio */
+        .salida {
+            margin-top: 12px;
+            font-size: 0.95em;
+            min-height: 24px;
+        }
+
+        /* Ejercicio 2: párrafo con fondo cambiable */
+        #parrafo-color {
+            margin-top: 12px;
+            padding: 10px;
+            line-height: 1.6;
+        }
+
+        /* Ejercicio 3: resultados de operaciones */
+        #salida-calcular p {
+            margin: 4px 0;
+        }
+
+        /* Ejercicio 4: texto invertido */
+        #salida-invertir {
+            font-size: 1.1em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Actividad de Aprendizaje – DOM</h1>
+    <p>Cuatro ejercicios de manipulación del DOM con JavaScript.</p>
+
+    <!-- ===================================================== -->
+    <!-- EJERCICIO 1: REPETIR                                   -->
+    <!-- ===================================================== -->
+    <div class="ejercicio">
+        <h2>1. REPETIR</h2>
+        <div class="fila">
+            <label>Palabra: <input type="text" id="palabra" value="Hola"></label>
+        </div>
+        <div class="fila">
+            <label>¿Cuántas veces? <input type="number" id="veces" value="8" min="1"></label>
+        </div>
+        <button onclick="repetir()">REPETIR!</button>
+        <div id="salida-repetir" class="salida"></div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- EJERCICIO 2: APLICAR COLOR                             -->
+    <!-- ===================================================== -->
+    <div class="ejercicio">
+        <h2>2. APLICAR</h2>
+        <div class="fila">
+            <label>Elija un color: <input type="color" id="color" value="#00ff00"></label>
+        </div>
+        <button onclick="aplicarColor()">APLICAR!</button>
+        <p id="parrafo-color">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique
+            possimus incidunt ducimus officiis tempore blanditiis sapiente perferendis
+            non. Eligendi corrupti eveniet quae saepe eaque itaque labore fugiat
+            tempora, consequatur quam?
+        </p>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- EJERCICIO 3: CALCULAR                                  -->
+    <!-- ===================================================== -->
+    <div class="ejercicio">
+        <h2>3. CALCULAR</h2>
+        <div class="fila">
+            <label>Ingrese un número: <input type="number" id="num1" value="5"></label>
+        </div>
+        <div class="fila">
+            <label>Ingrese otro número: <input type="number" id="num2" value="10"></label>
+        </div>
+        <button onclick="calcular()">CALCULAR!</button>
+        <div id="salida-calcular" class="salida"></div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- EJERCICIO 4: INVERTIR                                  -->
+    <!-- ===================================================== -->
+    <div class="ejercicio">
+        <h2>4. INVERTIR</h2>
+        <div class="fila">
+            <label>Ingrese algo: <input type="text" id="texto-invertir" value="Holanda que talca"></label>
+        </div>
+        <button onclick="invertir()">INVERTIR!</button>
+        <div id="salida-invertir" class="salida"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
